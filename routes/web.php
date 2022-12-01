@@ -23,3 +23,7 @@ Route::post('/login/auth', [LoginController::class, 'login']);
 Route::get('/user/login', function() {
     return view('login');
 })->name('login');
+
+Route::get('/rencana-kerja/pendidikan', function() {
+    return view('pages/pel_pendidikan');
+});

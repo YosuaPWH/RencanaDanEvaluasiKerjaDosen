@@ -24,7 +24,7 @@
                     <div class="mb-3">
                         <label for="username">Username</label>
                         <input type="text" id="username" name="usernameLogin"
-                            class="form-control @error('password') is-invalid @enderror" value="@error('password') {{ old('username-login') }} @enderror"
+                            class="form-control @error('password') is-invalid @enderror" value="@error('password'){{ old('usernameLogin') }}@enderror"
                             placeholder="Silahkan masukkan username anda" onclick="removeRedBorder()">
                         <div class="invalid-feedback"></div>
                     </div>

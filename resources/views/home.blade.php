@@ -17,7 +17,7 @@
             @include('components.sidenav')
         </div>
     </div>
-    <div class=" justify-end flex-grow">
+    <div class=" justify-end flex-grow shadow">
         <header class="justify-between flex flex-grow border-b bg-white p-3 ">
             <div class="text-black ">
                 <p class="m-0 text-3xl font-bold">Rencana Kerja Dosen</p>
@@ -46,7 +46,7 @@
                     <a href="/penunjang" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Penunjang</a>
                     <a href="/simpulan" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white rounded-r-lg font-bold">Simpulan</a>
                 </nav>
-                <div class="konten mt-3">
+                <div class="konten mt-2">
                     @yield('konten')
                 </div>
                 <div class="konten mt-3">
