@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+nav a {
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    /* color: white; */
+}
