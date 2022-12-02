@@ -4,7 +4,7 @@
 <script>
     function hide(bagian) {
         let aa = document.getElementById(bagian).style.display
-        // console.log(aa)
+        
         if (aa == "block") {
             document.getElementById(bagian).style.display = "none";
         } else {
@@ -13,11 +13,6 @@
     }
 </script>
 <div>
-    {{-- <button type="button" class="p-2 text-white rounded bg-green-500 font-medium hover:bg-green-600 mb-2">
-        <i class="bi bi-plus-lg"></i>
-        Tambah Data
-    </button> --}}
-    @include('components.tambah_data')
     <div class="bg-white rounded-lg p-2 border mb-2">
         <div class="mb-2 flex justify-between">
             <p class="font-semibold">A. Melaksanakan perkuliahan (tutorial tatap muka, dan/atau daring) dan membimbing, menguji serta menyelenggarakan pendidikan di laboratorium, praktik keguruan bengkel/studio/kebun (tatap muka dan/atau daring) pada institusi pendidikan sesuai penugasan</p>
