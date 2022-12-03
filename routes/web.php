@@ -27,3 +27,7 @@ Route::get('/user/login', function() {
 Route::get('/rencana-kerja/pendidikan', function() {
     return view('pages/pel_pendidikan');
 });
+
+Route::get('/rencana-kerja/penelitian', function() {
+    return view('pages/pel_penelitian');
+});

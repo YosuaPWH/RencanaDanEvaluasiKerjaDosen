@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Beranda</title>
+    <title>@yield('page-title')</title>
     @vite(['resources/js/app.js'])
     @vite(['resources/css/app.css'])
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -36,7 +36,7 @@
         {{-- <hr class="mt-0 text-white"> --}}
         <main class=" p-3">
             <div>
-                <p class="text-black mb-1">Beranda > Biodata</p>
+                <p class="text-black mb-1">Beranda / @yield('breadcrumb-title')</p>
                 <div class="flex">
                     @include('components.iconHall')
                     <h4 class="text-black mt-auto mr-auto mb-auto">Rencana Beban Kerja Dosen - Semester Genap 2022/2023</h4>
@@ -45,7 +45,7 @@
                 <nav class="flex p-0 w-fit rounded-lg">
                     <a href="/biodata" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white rounded-l-lg font-bold">Biodata</a>
                     <a href="/rencana-kerja/pendidikan" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Pendidikan</a>
-                    <a href="/penelitian" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Penelitian</a>
+                    <a href="/rencana-kerja/penelitian" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Penelitian</a>
                     <a href="/pengabdian" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Pengabdian</a>
                     <a href="/penunjang" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Penunjang</a>
                     <a href="/simpulan" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white rounded-r-lg font-bold">Simpulan</a>

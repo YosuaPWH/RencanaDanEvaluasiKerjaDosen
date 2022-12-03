@@ -1,23 +1,37 @@
 @extends('home')
 
+@section('page-title', 'Rencana - Pendidikan')
+@section('breadcrumb-title', 'Pelaksanaan Pendidikan')
+
 @section('konten')
 <script>
     function hide(bagian) {
-        let aa = document.getElementById(bagian).style.display
-        // console.log(aa)
-        if (aa == "block") {
-            document.getElementById(bagian).style.display = "none";
+        const idTable = document.getElementById(bagian).classList
+        
+        if (idTable.contains('d-block')) {
+            idTable.replace('d-block', 'd-none')
         } else {
-            document.getElementById(bagian).style.display = "block";
+            idTable.replace('d-none', 'd-block')
         }
     }
 </script>
 <div>
-    {{-- <button type="button" class="p-2 text-white rounded bg-green-500 font-medium hover:bg-green-600 mb-2">
-        <i class="bi bi-plus-lg"></i>
-        Tambah Data
-    </button> --}}
-    @include('components.tambah_data')
+    @include('components.tambah_data', array('data' => array(
+        'A. Melaksanakan perkuliahan (tutorial tatap muka, dan/atau daring) dan membimbing, menguji serta menyelenggarakan pendidikan di laboratorium, praktik keguruan bengkel/studio/kebun (tatap muka dan/atau daring) pada institusi pendidikan sesuai penugasan',
+        'B. Membimbing Seminar',
+        'C. Membimbing Kuliah Kerja Nyata, Praktek Kerja Nyata, Praktek Kerja Lapangan',
+        'D. Membimbing dan ikut membimbing dalam menghasilkan disertasi, tesis, skripsi dan laporan akhir studi yang sesuai dengan bidang tugasnya',
+        'E. Bertugas sebagai penguji pada ujian akhir/profesi',
+        'F. Membina kegiatan mahasiswa di bidang akademik dan kemahasiswaan, termasuk dalam kegiatan ini adalah membimbing mahasiswa menghasilkan produk saintifik, membimbing mahasiswa mengikuti kompetisi di bidang akademik dan kemahasiswaan',
+        'G. Melakukan kegiatan pengembangan program kuliah tatap muka/daring (RPS, perangkat pembelajaran)',
+        'H. Mengembangkan bahan kuliah',
+        'I. Menyampaikan orasi ilmiah',
+        'J. Menduduki jabatan pimpinan perguruan tinggi',
+        'K. Membimbing dosen yang lebih rendah jabatannya',
+        'L. Melaksanakan kegiatan Detasering dan Pencangkokan di luar institusi',
+        'M. Melaksanakan kegiatan pendampingan mahasiswa di luar institusi sesuai kebijakan Kementerian',
+        'N. Melakukan kegiatan pengembangan diri untuk meningkatkan kompetensi/memperoleh sertifikasi profesi'
+    )))
     <div class="bg-white rounded-lg p-2 border mb-2">
         <div class="mb-2 flex justify-between">
             <p class="font-semibold">A. Melaksanakan perkuliahan (tutorial tatap muka, dan/atau daring) dan membimbing, menguji serta menyelenggarakan pendidikan di laboratorium, praktik keguruan bengkel/studio/kebun (tatap muka dan/atau daring) pada institusi pendidikan sesuai penugasan</p>
@@ -25,12 +39,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianA" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianA">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Rencana Pertemuan</th>
                         <th class="p-2 border-r-2 ">SKS MK Terhitung</th>
                         <th class="p-2 border-r-2">SKS BKD</th>
@@ -55,12 +69,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianB" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianB">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
@@ -83,12 +97,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianC" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianC">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
@@ -111,12 +125,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianD" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianD">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
@@ -139,12 +153,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianE" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianE">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
@@ -167,12 +181,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianF" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianF">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
@@ -195,12 +209,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianG" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianG">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
@@ -223,12 +237,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianH" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianH">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
@@ -251,12 +265,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianI" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianI">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
@@ -279,12 +293,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianJ" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianJ">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
@@ -307,12 +321,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianK" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianK">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
@@ -335,12 +349,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianL" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianL">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
@@ -363,12 +377,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianM" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianM">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
@@ -391,12 +405,12 @@
                 <i class="bi bi-chevron-up"></i>
             </button>
         </div>
-        <div class="border rounded-lg overflow-auto" id="bagianN" style="display: block;">
+        <div class="border rounded-lg overflow-auto d-block" id="bagianN">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">
                         <th class="p-2 border-r-2 w-1">No</th>
-                        <th class="p-2 border-r-2 w-2/6">Kegiatan</th>
+                        <th class="p-2 border-r-2 w-2/6">Nama Kegiatan</th>
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>

@@ -26,8 +26,11 @@
                 <div>
                     <div class="mb-4">
                         <select name="pelaksanaan" id="pel" style="width: 100%">
-                            <option selected>-- Pilih Pelaksanaan --</option>
-                            <option value="A">A. Melaksanakan perkuliahan (tutorial tatap muka, dan/atau daring) dan membimbing, menguji serta menyelenggarakan pendidikan di laboratorium, praktik keguruan bengkel/studio/kebun (tatap muka dan/atau daring) pada institusi pendidikan sesuai penugasan</option>
+                            <option selected disabled >-- Pilih Pelaksanaan --</option>
+                            @foreach ($data as $dt)
+                                <option value="{{ $dt[0]}}">{{$dt}}</option>
+                            @endforeach
+                            {{-- <option value="A">A. Melaksanakan perkuliahan (tutorial tatap muka, dan/atau daring) dan membimbing, menguji serta menyelenggarakan pendidikan di laboratorium, praktik keguruan bengkel/studio/kebun (tatap muka dan/atau daring) pada institusi pendidikan sesuai penugasan</option>
                             <option value="B">B. Membimbing Seminar</option>
                             <option value="C">C. Membimbing Kuliah Kerja Nyata, Praktek Kerja Nyata, Praktek Kerja Lapangan</option>
                             <option value="D">D. Membimbing dan ikut membimbing dalam menghasilkan disertasi, tesis, skripsi dan laporan akhir studi yang sesuai dengan bidang tugasnya</option>
@@ -40,7 +43,7 @@
                             <option value="K">K. Membimbing dosen yang lebih rendah jabatannya</option>
                             <option value="L">L. Melaksanakan kegiatan Detasering dan Pencangkokan di luar institusi</option>
                             <option value="M">M. Melaksanakan kegiatan pendampingan mahasiswa di luar institusi sesuai kebijakan Kementerian</option>
-                            <option value="N">N. Melakukan kegiatan pengembangan diri untuk meningkatkan kompetensi/memperoleh sertifikasi profesi</option>
+                            <option value="N">N. Melakukan kegiatan pengembangan diri untuk meningkatkan kompetensi/memperoleh sertifikasi profesi</option> --}}
                         </select>
                     </div>
                     <div class="mb-2">

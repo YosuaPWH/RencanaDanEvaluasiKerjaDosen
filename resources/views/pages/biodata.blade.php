@@ -1,5 +1,8 @@
 @extends('home')
 
+@section('page-title', 'Biodata')
+@section('breadcrumb-title', 'Biodata')
+
 @section('konten')
 <div class=" mb-1 w-fit ml-auto">
     @include('components.setting_biodata')
