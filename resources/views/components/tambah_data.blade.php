@@ -28,22 +28,8 @@
                         <select name="pelaksanaan" id="pel" style="width: 100%">
                             <option selected disabled >-- Pilih Pelaksanaan --</option>
                             @foreach ($data as $dt)
-                                <option value="{{ $dt[0]}}">{{$dt}}</option>
+                                <option value="{{ $dt[0]}}">{{ $dt }}</option>
                             @endforeach
-                            {{-- <option value="A">A. Melaksanakan perkuliahan (tutorial tatap muka, dan/atau daring) dan membimbing, menguji serta menyelenggarakan pendidikan di laboratorium, praktik keguruan bengkel/studio/kebun (tatap muka dan/atau daring) pada institusi pendidikan sesuai penugasan</option>
-                            <option value="B">B. Membimbing Seminar</option>
-                            <option value="C">C. Membimbing Kuliah Kerja Nyata, Praktek Kerja Nyata, Praktek Kerja Lapangan</option>
-                            <option value="D">D. Membimbing dan ikut membimbing dalam menghasilkan disertasi, tesis, skripsi dan laporan akhir studi yang sesuai dengan bidang tugasnya</option>
-                            <option value="E">E. Bertugas sebagai penguji pada ujian akhir/profesi</option>
-                            <option value="F">F. Membina kegiatan mahasiswa di bidang akademik dan kemahasiswaan, termasuk dalam kegiatan ini adalah membimbing mahasiswa menghasilkan produk saintifik, membimbing mahasiswa mengikuti kompetisi di bidang akademik dan kemahasiswaan</option>
-                            <option value="G">G. Melakukan kegiatan pengembangan program kuliah tatap muka/daring (RPS, perangkat pembelajaran)</option>
-                            <option value="H">H. Mengembangkan bahan kuliah</option>
-                            <option value="I">I. Menyampaikan orasi ilmiah</option>
-                            <option value="J">J. Menduduki jabatan pimpinan perguruan tinggi</option>
-                            <option value="K">K. Membimbing dosen yang lebih rendah jabatannya</option>
-                            <option value="L">L. Melaksanakan kegiatan Detasering dan Pencangkokan di luar institusi</option>
-                            <option value="M">M. Melaksanakan kegiatan pendampingan mahasiswa di luar institusi sesuai kebijakan Kementerian</option>
-                            <option value="N">N. Melakukan kegiatan pengembangan diri untuk meningkatkan kompetensi/memperoleh sertifikasi profesi</option> --}}
                         </select>
                     </div>
                     <div class="mb-2">

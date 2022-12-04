@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\AuthUser;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 
@@ -31,6 +34,7 @@ class LoginController extends Controller
                 ->withInput()
                 ->withErrors(['password' => 'salah']);
         }
+
     }
 
     function getDataDosen($userId, $token) {
@@ -50,21 +54,38 @@ class LoginController extends Controller
         $jsonKeaktifan = json_decode($responseStatusKeaktifan, true);
         $keaktifanDosen = $jsonKeaktifan['data']['pegawai'][0]['status_pegawai'];
 
-        return view('pages.biodata', [
-            'nama' => $nama, 
-            'prodi' => $prodi, 
-            'email' => $email, 
-            'nidn' => $nidn, 
-            'nip' => $nip,
-            'jabatanFungsional' => $jabatanFungsional,
-            'keaktifan' => $keaktifanDosen,
-        ]);
+        $cekApakahAdaId = User::where('id', '=', $userId)->exists();
+
+        $dataUser = new User;
+        $dataUser->id = $userId;
+        $dataUser->nama = $nama;
+        $dataUser->prodi = $prodi;
+        $dataUser->email = $email;
+        $dataUser->nidn = $nidn;
+        $dataUser->nip = $nip;
+        $dataUser->jabatan_fungsional = $jabatanFungsional;
+        $dataUser->keaktifan = $keaktifanDosen;
+
+        // Cek apakah data sudah ada di dalam database, jika belum akan dibuat data baru di dalam database
+        if (!$cekApakahAdaId) {
+            $dataUser->save();
+        }
+
+        Auth::login($dataUser);
+        return redirect('/');
     }
+
 
     function pendidikan() {
         return view('pendidikan', [
             'nama' => 'dwa',
         ]);
     }
+
+    function logout(Request $request) {
+        Auth::logout();
+        return redirect('/');
+    }
+
 
 }

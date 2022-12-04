@@ -27,7 +27,8 @@
                 <p class="m-0 text-3xl font-bold">Rencana Kerja Dosen</p>
             </div>
             <div class="flex">
-                <div>
+                <div class="text-center border justify-center flex">
+                    {{ Auth::user()->nama }}
                     @include('components.notifications')
                 </div>
                 <i class="bi bi-person-circle p-2 text-white"></i>
@@ -46,8 +47,8 @@
                     <a href="/biodata" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white rounded-l-lg font-bold">Biodata</a>
                     <a href="/rencana-kerja/pendidikan" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Pendidikan</a>
                     <a href="/rencana-kerja/penelitian" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Penelitian</a>
-                    <a href="/pengabdian" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Pengabdian</a>
-                    <a href="/penunjang" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Penunjang</a>
+                    <a href="/rencana-kerja/pengabdian" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Pengabdian</a>
+                    <a href="/rencana-kerja/penunjang" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Penunjang</a>
                     <a href="/simpulan" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white rounded-r-lg font-bold">Simpulan</a>
                 </nav>
                 <div class="konten mt-4">

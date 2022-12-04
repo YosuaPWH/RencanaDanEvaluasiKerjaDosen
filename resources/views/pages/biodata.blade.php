@@ -14,7 +14,7 @@
                 Nama
             </th>
             <td class="w-4/6">
-                {{$nama}}
+                {{ auth()->user()->nama }}
             </td>
         </tr>
         <tr class="border-b">
@@ -22,7 +22,7 @@
                 NIP
             </th>
             <td class="w-4/6">
-                {{$nip}}
+                {{ auth()->user()->nip }}
             </td>
         </tr>
         <tr class="border-b bg-gray-200">
@@ -30,7 +30,7 @@
                 NIDN
             </th>
             <td class="w-4/6">
-                {{$nidn}}
+                {{ auth()->user()->nidn}}
             </td>
         </tr>
         <tr class="border-b">
@@ -38,13 +38,13 @@
                 Fakultas
             </th>
             <td class="w-4/6">
-                @if ($prodi == 'S1 Informatika' || $prodi == 'S1 Sistem Informasi' || $prodi == 'S1 Teknik Elektro')
+                @if (auth()->user()->prodi == 'S1 Informatika' || auth()->user()->prodi == 'S1 Sistem Informasi' || auth()->user()->prodi == 'S1 Teknik Elektro')
                 Fakultas Informatika dan Teknik Elektro
-                @elseif ($prodi == 'S1 Manajemen Rekayasa')
+                @elseif (auth()->user()->prodi == 'S1 Manajemen Rekayasa')
                 Fakultas Teknik Industri
-                @elseif ($prodi == 'S1 Teknik Bioproses')
+                @elseif (auth()->user()->prodi == 'S1 Teknik Bioproses')
                 Fakultas Bioteknologi
-                @elseif ($prodi == 'DIII Teknologi Kompoter' || $prodi == 'DII Teknologi Informasi' || $prodi == 'DIV Teknologi Rekayasa Perangkat Lunak')
+                @elseif (auth()->user()->prodi == 'DIII Teknologi Kompoter' || auth()->user()->prodi == 'DII Teknologi Informasi' || auth()->user()->prodi == 'DIV Teknologi Rekayasa Perangkat Lunak')
                 Fakultas Vokasi
                 @endif   
             </td>
@@ -54,7 +54,7 @@
                 Program Studi
             </th>
             <td class="w-4/6">
-                {{$prodi}}
+                {{ auth()->user()->prodi }}
             </td>
         </tr>
         <tr class="border-b">
@@ -70,7 +70,7 @@
                 Jabatan Fungsional
             </th>
             <td class="w-4/6">
-                {{$jabatanFungsional}}
+                {{ auth()->user()->jabatan_fungsional }}
             </td>
         </tr>
         <tr class="border-b">
@@ -102,7 +102,7 @@
                 Status Keaktifan
             </th>
             <td class="w-4/6">
-                @if ($keaktifan == 'A')
+                @if (auth()->user()->keaktifan == 'A')
                 Aktif
                 @else
                 Keluar
