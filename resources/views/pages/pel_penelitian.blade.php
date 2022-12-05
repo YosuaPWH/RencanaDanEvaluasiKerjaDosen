@@ -25,7 +25,7 @@
         'F. Membuat rancangan dan karya teknologi yang dipatenkan atau seni yang terdaftar di HaKI',
         'G. Rumusan kebijakan yang monumental dalam bentuk arahan/kertas kebijakan (policy brief/policy paper), naskah akademik, model kebijakan strategis atau rekomendasi kebijakan yang berkontribusi terhadap pengembangan kebijakan dan pembangunan',
         'H. Membuat rancangan dan karya teknologi yang tidak dipatenkan rancangan dan karya seni monumental yang tidak terdaftar di HaKI, tetapi telah dipresentasikan pada forum yang teragenda',
-    )))
+    )), ['jns_table' => 'penelitian'])
     <div class="bg-white rounded-lg p-2 border mb-2">
         <div class="mb-2 flex justify-between">
             <p class="font-semibold">A. Menghasilkan karya ilmiah sesuai dengan bidangnya</p>

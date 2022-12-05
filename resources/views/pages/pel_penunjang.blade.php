@@ -27,7 +27,7 @@
         'H. Menulis buku pelajaran SLTA ke bawah yang diterbitkan dan diedarkan secara nasional',
         'I. Mempunyai prestasi di bidang olahraga/humaniora',
         'J. Keanggotaan dalam tim penilai/kegiatan lainnya dari Kementerian'
-    )))
+    )), ['jns_table' => 'penunjang'])
     <div class="bg-white rounded-lg p-2 border mb-2">
         <div class="mb-2 flex justify-between">
             <p class="font-semibold">A. Menjadi anggota dalam suatu panitia/badan pada perguruan tinggi</p>

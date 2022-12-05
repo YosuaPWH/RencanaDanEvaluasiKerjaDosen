@@ -12,9 +12,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.full.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.css" rel="stylesheet" />
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 </head>
-<body class="bg-theme-4 flex">
+<body class="bg-theme-4 flex opacity-100">
     <div class="sidenav w-2/12 text-white  border-r bg-gradient-to-b from-bluedesign to-skydesign h-screen sticky top-0">
         <div class="logo p-3 text-center">
             <p class="text-2xl font-bold">Institut Teknologi Del</p>
@@ -27,14 +28,13 @@
                 <p class="m-0 text-3xl font-bold">Rencana Kerja Dosen</p>
             </div>
             <div class="flex">
-                <div class="text-center border justify-center flex">
+                <div class="items-center flex gap-3">
                     {{ Auth::user()->nama }}
                     @include('components.notifications')
                 </div>
                 <i class="bi bi-person-circle p-2 text-white"></i>
             </div>
         </header>
-        {{-- <hr class="mt-0 text-white"> --}}
         <main class=" p-3">
             <div>
                 <p class="text-black mb-1">Beranda / @yield('breadcrumb-title')</p>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CRUDTableController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,7 @@ Route::get('/api/{useraccount}/{token}/{appid}', function(){
 
 })->middleware('auth.token');
 
-Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/user/logout', [LoginController::class, 'logout']);
 
 Route::get('/logut', function() {
     Auth::logout();
@@ -34,21 +35,7 @@ Route::get('/logut', function() {
 });
 
 Route::middleware(['auth'])->group(function() {
-    Route::get('/rencana-kerja/pendidikan', function() {
-        return view('pages/pel_pendidikan');
-    });
-
-    Route::get('/rencana-kerja/pengabdian', function() {
-        return view('pages/pel_pengabdian');
-    });
-
-    Route::get('/rencana-kerja/penelitian', function() {
-        return view('pages/pel_penelitian');
-    });
-
-    Route::get('/rencana-kerja/penunjang', function() {
-        return view('pages/pel_penunjang');
-    });
+    Route::get('/rencana-kerja/{jenisPelaksanaan}', [CRUDTableController::class, 'tampilData']);
 
     Route::get('/biodata', function() {
         return view('pages.biodata');
@@ -57,5 +44,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/', function() {
         return view('pages.biodata');
     })->name('home');
+
+    Route::post('/rencana-kerja/pendidikan/tambah-data', [CRUDTableController::class, 'tambahData']);
 
 });

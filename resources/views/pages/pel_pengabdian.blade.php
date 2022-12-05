@@ -23,7 +23,7 @@
         'D. Membuat/menulis karya pengabdian pada masyarakat yang dipublikasikan',
         'E. Hasil kegiatan pengabdian masyarakat yang dipublikasikan di sebuah berkala/jurnal ilmiah pengabdian kepada masyarakat atau teknologi tepat guna, merupakan diseminasi dari luaran program kegiatan pengabdian kepada masyarakat, tiap karya',
         'F. Berperan serta aktif dalam pengelolaan jurnal ilmiah'
-    )))
+    )), ['jns_table' => 'pengabdian'])
     <div class="bg-white rounded-lg p-2 border mb-2">
         <div class="mb-2 flex justify-between">
             <p class="font-semibold">A. Melaksanakan pengembangan hasil pendidikan dan penelitian</p>

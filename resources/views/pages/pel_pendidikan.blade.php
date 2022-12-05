@@ -31,7 +31,7 @@
         'L. Melaksanakan kegiatan Detasering dan Pencangkokan di luar institusi',
         'M. Melaksanakan kegiatan pendampingan mahasiswa di luar institusi sesuai kebijakan Kementerian',
         'N. Melakukan kegiatan pengembangan diri untuk meningkatkan kompetensi/memperoleh sertifikasi profesi'
-    )))
+    )), ['jns_table' => 'pendidikan'])
     <div class="bg-white rounded-lg p-2 border mb-2">
         <div class="mb-2 flex justify-between">
             <p class="font-semibold">A. Melaksanakan perkuliahan (tutorial tatap muka, dan/atau daring) dan membimbing, menguji serta menyelenggarakan pendidikan di laboratorium, praktik keguruan bengkel/studio/kebun (tatap muka dan/atau daring) pada institusi pendidikan sesuai penugasan</p>

@@ -75,7 +75,6 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-
     function pendidikan() {
         return view('pendidikan', [
             'nama' => 'dwa',
@@ -86,6 +85,5 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/');
     }
-
 
 }
