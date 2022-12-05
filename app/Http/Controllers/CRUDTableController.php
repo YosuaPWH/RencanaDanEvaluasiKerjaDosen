@@ -10,22 +10,14 @@ use Illuminate\Support\Facades\Redirect;
 class CRUDTableController extends Controller
 {
     function tambahData(Request $request) {
-        // dd($request->all(), $request->tabel);
-
-
-        // $tambah = new TablePendidikan;
-
-        // $tambah->bagian_table = $request->pelaksanaan;
-        // $tambah->nama_kegiatan = $request->namaKegiatan;
-        // $tambah->status = $request->status;
-        // $tambah->jumlah_kegiatan = $request->jumlahKegiatan;
-        // $tambah->beban_tugas = $request->bebanTugas;
-        // $tambah->save();
         $namatabel = "";
+        $url = "";
         if ($request->tabel == "pendidikan") {
             $namatabel = "table_pendidikan";
+            $url = 'rencana-kerja/pendidikan';
         } else if($request->tabel == "penelitian") {
             $namatabel = "table_penelitian";
+            $url = 'rencana-kerja/penelitian';
         }
 
         DB::table($namatabel)->insert([
@@ -35,28 +27,36 @@ class CRUDTableController extends Controller
 			'jumlah_kegiatan' => $request->jumlahKegiatan,
             'beban_tugas' => $request->bebanTugas
 		]);
-        // dd($tambah);
 
-        $pages = "";
-        if ($request->tabel == "pendidikan") {
-            $pages = "pages/pel_pendidikan";
-        } else if ($request->tabel == "penelitian") {
-            $pages = "pages/pel_penelitian";
-        } else if ($request->tabel == "pengabdian") {
-            $pages = "pages/pel_pengabdian";
-        } else if ($request->tabel == "penunjang") {
-            $pages = "pages/pel_penunjang";
+        return redirect($url);
+    }
+
+    function getNamaTabel($jenisPelaksanaan) {
+        if ($jenisPelaksanaan == "pendidikan") {
+            return "table_pendidikan";
+        } else if ($jenisPelaksanaan == "penelitian") {
+            return "table_penelitian";
+        } else if ($jenisPelaksanaan == "pengabdian") {
+            return "table_pengabdian";
+        } else if ($jenisPelaksanaan == "penunjang") {
+            return "table_penunjang";
         }
-
-        return view($pages);
     }
 
     function tampilData($jenisPelaksanaan) {
-        $pages = "";
+        $namatabel = $this->getNamaTabel($jenisPelaksanaan);
         if ($jenisPelaksanaan == "pendidikan") {
-            $pages = "pages/pel_pendidikan";
+
+            $tabelDataPendidikan = DB::table($namatabel)->select('bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas', 'rencana_pertemuan', 'sks_mk_terhitung', 'sks_bkd')->get();
+
+            return view('pages.pel_pendidikan')->with('datapendidikan', $tabelDataPendidikan);
+
         } else if ($jenisPelaksanaan == "penelitian") {
-            $pages = "pages/pel_penelitian";
+
+            $tabelDataPenelitian = DB::table($namatabel)->select('nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')->get();
+
+            return view('pages.pel_penelitian')->with('datapenelitian', $tabelDataPenelitian);
+            
         } else if ($jenisPelaksanaan == "pengabdian") {
             $pages = "pages/pel_pengabdian";
         } else if ($jenisPelaksanaan == "penunjang") {
@@ -64,6 +64,8 @@ class CRUDTableController extends Controller
         } else {
             return view('errors.404');
         }
+
+
 
         return view($pages);
     }
