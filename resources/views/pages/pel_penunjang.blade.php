@@ -47,11 +47,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td colspan="7" class="text-center p-3 bg-blue-200">
-                            Belum ada datang yang di klaim
-                        </td>
-                    </tr>
+                    <span class="hidden">{{ $byk = 0 }}</span>
+                    @foreach ($datapenunjang as $data)
+                        @if ($data->bagian_table == "A")
+                            <tr>
+                                <td class="p-2">{{ $byk+=1 }}</td>
+                                <td class="p-2">{{ $data->nama_kegiatan }}</td>
+                                <td class="p-2">{{ $data->status }}</td>
+                                <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
+                                <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    @if ($byk == 0)
+                        <tr>
+                            <td colspan="7" class="text-center p-3 bg-blue-200">
+                                Belum ada datang yang di klaim
+                            </td>
+                        </tr>
+                    @endif 
                 </tbody>
             </table>
         </div>
@@ -75,11 +89,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td colspan="7" class="text-center p-3 bg-blue-200">
-                            Belum ada datang yang di klaim
-                        </td>
-                    </tr>
+                    <span class="hidden">{{ $byk = 0 }}</span>
+                    @foreach ($datapenunjang as $data)
+                        @if ($data->bagian_table == "B")
+                            <tr>
+                                <td class="p-2">{{ $byk+=1 }}</td>
+                                <td class="p-2">{{ $data->nama_kegiatan }}</td>
+                                <td class="p-2">{{ $data->status }}</td>
+                                <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
+                                <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    @if ($byk == 0)
+                        <tr>
+                            <td colspan="7" class="text-center p-3 bg-blue-200">
+                                Belum ada datang yang di klaim
+                            </td>
+                        </tr>
+                    @endif 
                 </tbody>
             </table>
         </div>
@@ -103,11 +131,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td colspan="7" class="text-center p-3 bg-blue-200">
-                            Belum ada datang yang di klaim
-                        </td>
-                    </tr>
+                    <span class="hidden">{{ $byk = 0 }}</span>
+                    @foreach ($datapenunjang as $data)
+                        @if ($data->bagian_table == "C")
+                            <tr>
+                                <td class="p-2">{{ $byk+=1 }}</td>
+                                <td class="p-2">{{ $data->nama_kegiatan }}</td>
+                                <td class="p-2">{{ $data->status }}</td>
+                                <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
+                                <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    @if ($byk == 0)
+                        <tr>
+                            <td colspan="7" class="text-center p-3 bg-blue-200">
+                                Belum ada datang yang di klaim
+                            </td>
+                        </tr>
+                    @endif 
                 </tbody>
             </table>
         </div>
@@ -131,11 +173,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td colspan="7" class="text-center p-3 bg-blue-200">
-                            Belum ada datang yang di klaim
-                        </td>
-                    </tr>
+                    <span class="hidden">{{ $byk = 0 }}</span>
+                    @foreach ($datapenunjang as $data)
+                        @if ($data->bagian_table == "D")
+                            <tr>
+                                <td class="p-2">{{ $byk+=1 }}</td>
+                                <td class="p-2">{{ $data->nama_kegiatan }}</td>
+                                <td class="p-2">{{ $data->status }}</td>
+                                <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
+                                <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    @if ($byk == 0)
+                        <tr>
+                            <td colspan="7" class="text-center p-3 bg-blue-200">
+                                Belum ada datang yang di klaim
+                            </td>
+                        </tr>
+                    @endif 
                 </tbody>
             </table>
         </div>
@@ -159,11 +215,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td colspan="7" class="text-center p-3 bg-blue-200">
-                            Belum ada datang yang di klaim
-                        </td>
-                    </tr>
+                    <span class="hidden">{{ $byk = 0 }}</span>
+                    @foreach ($datapenunjang as $data)
+                        @if ($data->bagian_table == "E")
+                            <tr>
+                                <td class="p-2">{{ $byk+=1 }}</td>
+                                <td class="p-2">{{ $data->nama_kegiatan }}</td>
+                                <td class="p-2">{{ $data->status }}</td>
+                                <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
+                                <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    @if ($byk == 0)
+                        <tr>
+                            <td colspan="7" class="text-center p-3 bg-blue-200">
+                                Belum ada datang yang di klaim
+                            </td>
+                        </tr>
+                    @endif 
                 </tbody>
             </table>
         </div>
@@ -187,11 +257,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td colspan="7" class="text-center p-3 bg-blue-200">
-                            Belum ada datang yang di klaim
-                        </td>
-                    </tr>
+                    <span class="hidden">{{ $byk = 0 }}</span>
+                    @foreach ($datapenunjang as $data)
+                        @if ($data->bagian_table == "F")
+                            <tr>
+                                <td class="p-2">{{ $byk+=1 }}</td>
+                                <td class="p-2">{{ $data->nama_kegiatan }}</td>
+                                <td class="p-2">{{ $data->status }}</td>
+                                <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
+                                <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    @if ($byk == 0)
+                        <tr>
+                            <td colspan="7" class="text-center p-3 bg-blue-200">
+                                Belum ada datang yang di klaim
+                            </td>
+                        </tr>
+                    @endif 
                 </tbody>
             </table>
         </div>
@@ -215,11 +299,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td colspan="7" class="text-center p-3 bg-blue-200">
-                            Belum ada datang yang di klaim
-                        </td>
-                    </tr>
+                    <span class="hidden">{{ $byk = 0 }}</span>
+                    @foreach ($datapenunjang as $data)
+                        @if ($data->bagian_table == "G")
+                            <tr>
+                                <td class="p-2">{{ $byk+=1 }}</td>
+                                <td class="p-2">{{ $data->nama_kegiatan }}</td>
+                                <td class="p-2">{{ $data->status }}</td>
+                                <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
+                                <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    @if ($byk == 0)
+                        <tr>
+                            <td colspan="7" class="text-center p-3 bg-blue-200">
+                                Belum ada datang yang di klaim
+                            </td>
+                        </tr>
+                    @endif 
                 </tbody>
             </table>
         </div>
@@ -243,11 +341,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td colspan="7" class="text-center p-3 bg-blue-200">
-                            Belum ada datang yang di klaim
-                        </td>
-                    </tr>
+                    <span class="hidden">{{ $byk = 0 }}</span>
+                    @foreach ($datapenunjang as $data)
+                        @if ($data->bagian_table == "H")
+                            <tr>
+                                <td class="p-2">{{ $byk+=1 }}</td>
+                                <td class="p-2">{{ $data->nama_kegiatan }}</td>
+                                <td class="p-2">{{ $data->status }}</td>
+                                <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
+                                <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    @if ($byk == 0)
+                        <tr>
+                            <td colspan="7" class="text-center p-3 bg-blue-200">
+                                Belum ada datang yang di klaim
+                            </td>
+                        </tr>
+                    @endif 
                 </tbody>
             </table>
         </div>
@@ -271,11 +383,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td colspan="7" class="text-center p-3 bg-blue-200">
-                            Belum ada datang yang di klaim
-                        </td>
-                    </tr>
+                    <span class="hidden">{{ $byk = 0 }}</span>
+                    @foreach ($datapenunjang as $data)
+                        @if ($data->bagian_table == "I")
+                            <tr>
+                                <td class="p-2">{{ $byk+=1 }}</td>
+                                <td class="p-2">{{ $data->nama_kegiatan }}</td>
+                                <td class="p-2">{{ $data->status }}</td>
+                                <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
+                                <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    @if ($byk == 0)
+                        <tr>
+                            <td colspan="7" class="text-center p-3 bg-blue-200">
+                                Belum ada datang yang di klaim
+                            </td>
+                        </tr>
+                    @endif 
                 </tbody>
             </table>
         </div>
@@ -299,11 +425,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td colspan="7" class="text-center p-3 bg-blue-200">
-                            Belum ada datang yang di klaim
-                        </td>
-                    </tr>
+                    <span class="hidden">{{ $byk = 0 }}</span>
+                    @foreach ($datapenunjang as $data)
+                        @if ($data->bagian_table == "J")
+                            <tr>
+                                <td class="p-2">{{ $byk+=1 }}</td>
+                                <td class="p-2">{{ $data->nama_kegiatan }}</td>
+                                <td class="p-2">{{ $data->status }}</td>
+                                <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
+                                <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    @if ($byk == 0)
+                        <tr>
+                            <td colspan="7" class="text-center p-3 bg-blue-200">
+                                Belum ada datang yang di klaim
+                            </td>
+                        </tr>
+                    @endif 
                 </tbody>
             </table>
         </div>

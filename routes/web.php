@@ -45,6 +45,6 @@ Route::middleware(['auth'])->group(function() {
         return view('pages.biodata');
     })->name('home');
 
-    Route::post('/rencana-kerja/pendidikan/tambah-data', [CRUDTableController::class, 'tambahData']);
+    Route::post('/rencana-kerja/{jenisTabel}/tambah-data', [CRUDTableController::class, 'tambahData']);
 
 });
