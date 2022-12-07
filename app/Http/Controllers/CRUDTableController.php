@@ -9,21 +9,8 @@ use Illuminate\Support\Facades\DB;
 class CRUDTableController extends Controller
 {
     function tambahData(Request $request, $jenisTabel) {
-        $namatabel = "";
-        $url = "";
-        if ($jenisTabel == "pendidikan") {
-            $namatabel = "table_pendidikan";
-            $url = "rencana-kerja/pendidikan";
-        } else if($jenisTabel == "penelitian") {
-            $namatabel = "table_penelitian";
-            $url = "rencana-kerja/penelitian";
-        } else if($jenisTabel == "pengabdian") {
-            $namatabel = "table_pengabdian";
-            $url = "rencana-kerja/pengabdian";
-        } else {
-            $namatabel = "table_penunjang";
-            $url = "rencana-kerja/penunjang";
-        }
+        $namatabel = $this->getNamaTabel($jenisTabel);
+        $url = $this->getUrl($jenisTabel);
 
         DB::table($namatabel)->insert([
 			'bagian_table' => $request->pelaksanaan,
@@ -72,6 +59,26 @@ class CRUDTableController extends Controller
         // return view('components.edit_data')->with('tampilData', $dataTabel);
         // dd($dataTabel);
         // return back();
+    }
+
+    function hapusData($jenisTabel, $id) {
+        $namatabel = $this->getNamaTabel($jenisTabel);
+
+        DB::table($namatabel)->delete($id);
+
+        return redirect($this->getUrl($jenisTabel));
+    }
+
+    function getUrl($jenisTabel) {
+        if ($jenisTabel == "pendidikan") {
+            return "rencana-kerja/pendidikan";
+        } else if($jenisTabel == "penelitian") {
+            return "rencana-kerja/penelitian";
+        } else if($jenisTabel == "pengabdian") {
+            return "rencana-kerja/pengabdian";
+        } else {
+            return "rencana-kerja/penunjang";
+        }
     }
 
     function getNamaTabel($jenisPelaksanaan) {

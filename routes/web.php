@@ -49,4 +49,6 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('rencana-kerja/{jenisTabel}/edit-data/{id}', [CRUDTableController::class, 'editData']);
 
+    Route::get('rencana-kerja/{jenisTabel}/hapus-data/{id}', [CRUDTableController::class, 'hapusData']);
+
 });

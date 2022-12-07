@@ -63,7 +63,9 @@
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2">
                                     <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
-                                    <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                    <a href="pengabdian/hapus-data/{{ $data->id }}">
+                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                    </a>
                                 </td>
                             </tr>
                         @endif
@@ -114,7 +116,9 @@
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2">
                                     <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
-                                    <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                    <a href="pengabdian/hapus-data/{{ $data->id }}">
+                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                    </a>
                                 </td>
                             </tr>
                         @endif
@@ -165,7 +169,9 @@
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2">
                                     <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
-                                    <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                    <a href="pengabdian/hapus-data/{{ $data->id }}">
+                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                    </a>
                                 </td>
                             </tr>
                         @endif
@@ -216,7 +222,9 @@
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2">
                                     <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
-                                    <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                    <a href="pengabdian/hapus-data/{{ $data->id }}">
+                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                    </a>
                                 </td>
                             </tr>
                         @endif
@@ -267,7 +275,9 @@
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2">
                                     <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
-                                    <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                    <a href="pengabdian/hapus-data/{{ $data->id }}">
+                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                    </a>
                                 </td>
                             </tr>
                         @endif
@@ -318,7 +328,9 @@
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2">
                                     <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
-                                    <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                    <a href="pengabdian/hapus-data/{{ $data->id }}">
+                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                    </a>
                                 </td>
                             </tr>
                         @endif
