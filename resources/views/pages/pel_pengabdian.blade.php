@@ -14,6 +14,14 @@
             idTable.replace('d-none', 'd-block')
         }
     }
+
+    function tambahKolom(bagian) {
+        const hideId = document.getElementById(bagian).classList
+    
+        if (hideId.contains('hidden')) {
+            hideId.remove('hidden')
+        } 
+    }
 </script>
 <div>
     @include('components.tambah_data', array('data' => array(
@@ -40,6 +48,7 @@
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2 ">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
+                        <th class="p-2 border-r-2 hidden w-2/12" id="bagianButtonA"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,6 +61,10 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                                <td class="p-2">
+                                    <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
+                                    <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                </td>
                             </tr>
                         @endif
                     @endforeach
@@ -61,6 +74,10 @@
                                 Belum ada datang yang di klaim
                             </td>
                         </tr>
+                    @else
+                        <script>
+                            tambahKolom("bagianButtonA");
+                        </script>
                     @endif 
                 </tbody>
             </table>
@@ -82,6 +99,7 @@
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
+                        <th class="p-2 border-r-2 hidden w-2/12" id="bagianButtonB"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -94,6 +112,10 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                                <td class="p-2">
+                                    <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
+                                    <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                </td>
                             </tr>
                         @endif
                     @endforeach
@@ -103,6 +125,10 @@
                                 Belum ada datang yang di klaim
                             </td>
                         </tr>
+                    @else
+                        <script>
+                            tambahKolom("bagianButtonB");
+                        </script>
                     @endif 
                 </tbody>
             </table>
@@ -124,6 +150,7 @@
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
+                        <th class="p-2 border-r-2 hidden w-2/12" id="bagianButtonC"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -136,6 +163,10 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                                <td class="p-2">
+                                    <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
+                                    <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                </td>
                             </tr>
                         @endif
                     @endforeach
@@ -145,6 +176,10 @@
                                 Belum ada datang yang di klaim
                             </td>
                         </tr>
+                    @else
+                        <script>
+                            tambahKolom("bagianButtonC");
+                        </script>
                     @endif 
                 </tbody>
             </table>
@@ -166,6 +201,7 @@
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
+                        <th class="p-2 border-r-2 hidden w-2/12" id="bagianButtonD"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -178,6 +214,10 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                                <td class="p-2">
+                                    <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
+                                    <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                </td>
                             </tr>
                         @endif
                     @endforeach
@@ -187,6 +227,10 @@
                                 Belum ada datang yang di klaim
                             </td>
                         </tr>
+                    @else
+                        <script>
+                            tambahKolom("bagianButtonD");
+                        </script>
                     @endif 
                 </tbody>
             </table>
@@ -208,6 +252,7 @@
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
+                        <th class="p-2 border-r-2 hidden w-2/12" id="bagianButtonE"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -220,6 +265,10 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                                <td class="p-2">
+                                    <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
+                                    <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                </td>
                             </tr>
                         @endif
                     @endforeach
@@ -229,6 +278,10 @@
                                 Belum ada datang yang di klaim
                             </td>
                         </tr>
+                    @else
+                        <script>
+                            tambahKolom("bagianButtonE");
+                        </script>
                     @endif 
                 </tbody>
             </table>
@@ -250,6 +303,7 @@
                         <th class="p-2 border-r-2">Status</th>
                         <th class="p-2 border-r-2">Jumlah Kegiatan</th>
                         <th class="p-2 border-r-2">Beban Tugas</th>
+                        <th class="p-2 border-r-2 hidden w-2/12" id="bagianButtonF"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -262,6 +316,10 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
+                                <td class="p-2">
+                                    <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
+                                    <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                </td>
                             </tr>
                         @endif
                     @endforeach
@@ -271,6 +329,10 @@
                                 Belum ada datang yang di klaim
                             </td>
                         </tr>
+                    @else
+                        <script>
+                            tambahKolom("bagianButtonF");
+                        </script>
                     @endif 
                 </tbody>
             </table>

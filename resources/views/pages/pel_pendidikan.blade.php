@@ -23,6 +23,7 @@
         } 
     }
 </script>
+
 <div>
     @include('components.tambah_data', array('data' => array(
         'A. Melaksanakan perkuliahan (tutorial tatap muka, dan/atau daring) dan membimbing, menguji serta menyelenggarakan pendidikan di laboratorium, praktik keguruan bengkel/studio/kebun (tatap muka dan/atau daring) pada institusi pendidikan sesuai penugasan',
@@ -74,7 +75,9 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">
-                                    <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
+                                    <a href="rencana-kerja/pendidikan/edit-data/{{ $data->id }}">
+                                        <button type="submit" class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
+                                    </a>
                                     <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
                                 </td>
                             </tr>
@@ -125,7 +128,9 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2">
-                                    <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
+                                    <a href="pendidikan/edit-data/{{ $data->id }}">
+                                        <button type="submit" class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
+                                    </a>
                                     <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
                                 </td>
                             </tr>

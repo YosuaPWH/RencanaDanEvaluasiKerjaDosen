@@ -35,9 +35,9 @@ Route::get('/logut', function() {
 });
 
 Route::middleware(['auth'])->group(function() {
-    Route::get('/rencana-kerja/{jenisPelaksanaan}', [CRUDTableController::class, 'tampilData']);
+    Route::get('rencana-kerja/{jenisPelaksanaan}', [CRUDTableController::class, 'tampilData']);
 
-    Route::get('/biodata', function() {
+    Route::get('biodata', function() {
         return view('pages.biodata');
     });
 
@@ -45,6 +45,8 @@ Route::middleware(['auth'])->group(function() {
         return view('pages.biodata');
     })->name('home');
 
-    Route::post('/rencana-kerja/{jenisTabel}/tambah-data', [CRUDTableController::class, 'tambahData']);
+    Route::post('rencana-kerja/{jenisTabel}/tambah-data', [CRUDTableController::class, 'tambahData']);
+
+    Route::get('rencana-kerja/{jenisTabel}/edit-data/{id}', [CRUDTableController::class, 'editData']);
 
 });

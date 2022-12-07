@@ -40,10 +40,10 @@ class CRUDTableController extends Controller
     function tampilData($jenisPelaksanaan) {
         $namatabel = $this->getNamaTabel($jenisPelaksanaan);
         
-        $dataTabel = DB::table($namatabel)->select('bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')->get();
+        $dataTabel = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')->get();
         if ($jenisPelaksanaan == "pendidikan") {
             
-            $tabelDataPendidikan = DB::table($namatabel)->select('bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas', 'rencana_pertemuan', 'sks_mk_terhitung', 'sks_bkd')->get();
+            $tabelDataPendidikan = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas', 'rencana_pertemuan', 'sks_mk_terhitung', 'sks_bkd')->get();
             
             return view('pages.pel_pendidikan')->with('datapendidikan', $tabelDataPendidikan);
             
@@ -63,6 +63,17 @@ class CRUDTableController extends Controller
             return view('errors.404');
         }
     }
+
+    function editData($jenisTabel, $id) {
+        $namatabel = $this->getNamaTabel($jenisTabel);
+
+        $dataTabel = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')->where('id', '=', $id)->first();
+
+        // return view('components.edit_data')->with('tampilData', $dataTabel);
+        // dd($dataTabel);
+        // return back();
+    }
+
     function getNamaTabel($jenisPelaksanaan) {
         if ($jenisPelaksanaan == "pendidikan") {
             return "table_pendidikan";
