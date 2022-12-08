@@ -51,14 +51,20 @@ class CRUDTableController extends Controller
         }
     }
 
-    function editData($jenisTabel, $id) {
+    function showEditData(Request $request, $jenisTabel) {
         $namatabel = $this->getNamaTabel($jenisTabel);
 
-        $dataTabel = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')->where('id', '=', $id)->first();
+        $dataTabel = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')->where('id', '=', $request->id)->first();
 
-        // return view('components.edit_data')->with('tampilData', $dataTabel);
-        // dd($dataTabel);
-        // return back();
+        // // return view('components.edit_data')->with('tampilData', $dataTabel);
+        // // dd($dataTabel);
+        // // return back();'
+        return response()->json($dataTabel, 200);
+
+    }
+
+    function editData(Request $request) {
+        
     }
 
     function hapusData($jenisTabel, $id) {

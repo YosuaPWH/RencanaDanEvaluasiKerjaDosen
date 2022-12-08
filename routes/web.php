@@ -47,8 +47,16 @@ Route::middleware(['auth'])->group(function() {
 
     Route::post('rencana-kerja/{jenisTabel}/tambah-data', [CRUDTableController::class, 'tambahData']);
 
-    Route::get('rencana-kerja/{jenisTabel}/edit-data/{id}', [CRUDTableController::class, 'editData']);
+    Route::post('rencana-kerja/{jenisTabel}/show-edit-data', [CRUDTableController::class, 'showEditData']);
+
+    Route::post('rencana-kerja/{jenisTabel}/edit-data', [CRUDTableController::class, 'editData']);
 
     Route::get('rencana-kerja/{jenisTabel}/hapus-data/{id}', [CRUDTableController::class, 'hapusData']);
+
+    Route::get('cobacoba', function() {
+        return view('components.edit_data');
+    });
+
+    // Route::post('rencana-kerja/{jenisTabel}/')
 
 });
