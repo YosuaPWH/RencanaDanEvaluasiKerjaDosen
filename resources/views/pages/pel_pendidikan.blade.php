@@ -25,7 +25,7 @@
     }
 </script>
 
-@include('components.edit_data', ['url' => "/rencana-kerja/pendidikan/show-edit-data"])
+@include('components.edit_data', ['url' => "/rencana-kerja/pendidikan/show-edit-data", 'pelaksanaan' => 'pendidikan'])
 
 
 <div>

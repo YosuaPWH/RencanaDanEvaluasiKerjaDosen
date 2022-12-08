@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TablePendidikan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class CRUDTableController extends Controller
 {
@@ -63,8 +64,32 @@ class CRUDTableController extends Controller
 
     }
 
-    function editData(Request $request) {
+    function editData(Request $request, $jenisTabel) {
+        $namatabel = $this->getNamaTabel($jenisTabel);
+
+        $rules = [
+            'editNamaKegiatan' => 'required',
+            'editStatus' => 'required',
+            'editBebanTugas' => 'required|numeric',
+            'editJumlahKegiatan' => 'required|numeric'
+        ];
+
+        $message = [
+            'required' => 'Input :attribute tidak boleh kosong',
+            'numeric' => 'Input :attribute harus berupa angka'
+        ];
+
+        if($this->validate($request, $rules, $message)) {
+
+            DB::table($namatabel)->where('id', '=', $request->editId)->update([
+                'nama_kegiatan' => $request->editNamaKegiatan,
+                'jumlah_kegiatan' => $request->editJumlahKegiatan,
+                'beban_tugas' => $request->editBebanTugas,
+                'status' => $request->editStatus
+            ]);
+        } 
         
+        return redirect($this->getUrl($jenisTabel));
     }
 
     function hapusData($jenisTabel, $id) {

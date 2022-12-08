@@ -24,7 +24,7 @@
     }
 </script>
 
-@include('components.edit_data', ['url' => "/rencana-kerja/penelitian/show-edit-data"])
+@include('components.edit_data', ['url' => "/rencana-kerja/penelitian/show-edit-data", 'pelaksanaan' => 'penelitian'])
 
 <div>
     @include('components.tambah_data', array('data' => array(

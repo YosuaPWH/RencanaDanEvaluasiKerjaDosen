@@ -12,31 +12,32 @@
                 </button>
             </div>
             {{-- Modal Body --}}
-            <form id="edit-form" action="/rencana-kerja/tambah-data" method="POST">
+            <form id="edit-form" action="{{ $pelaksanaan }}/edit-data" method="POST">
                 @csrf
+                <input type="text" name="editId" id="modal-id" hidden>
                 <div>
                     <div class="mb-4">
                         <input type="text" name="modal-input-pelaksanaan" id="modal-input-nama-tabel" class="form-control" disabled>
                     </div>
                     <div class="mb-2">
                         <label for="namaKegiatan">Nama Kegiatan</label>
-                        <input type="text" name="modal-input-nama-kegiatan"  id="modal-input-nama-kegiatan" class="form-control">
+                        <input type="text" name="editNamaKegiatan"  id="modal-input-nama-kegiatan" class="form-control">
                     </div>
                     <div class="flex justify-between gap-3">
                         <div>
                             <label for="status">Status</label><br>
-                            <select name="modal-input-status" id="modal-input-status" class="form-select">
+                            <select name="editStatus" id="modal-input-status" class="form-select">
                                 <option value="Berlanjut">Berlanjut</option>
                                 <option value="Selesai">Selesai</option>
                             </select>
                         </div>
                         <div>
                             <label for="bebanTugas">Beban Tugas</label>
-                            <input type="text" name="modal-input-beban-tugas" id="modal-input-beban-tugas" class="form-control">
+                            <input type="text" name="editBebanTugas" id="modal-input-beban-tugas" class="form-control">
                         </div>
                         <div>
                             <label for="jlhKegiatan">Jumlah Kegiatan</label>
-                            <input type="text" name="modal-input-jumlah-kegiatan" id="modal-input-jumlah-kegiatan" class="form-control">
+                            <input type="text" name="editJumlahKegiatan" id="modal-input-jumlah-kegiatan" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -62,7 +63,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            
+
             var id = $(this).data('id');
             var namaTabel = $(this).data('nama-tabel');
             let getUrl = $("#url").text();
@@ -73,6 +74,8 @@
                 data: { id: id },
                 dataType: 'json',
                 success: function(res) {
+                    $("#modal-id").val(res.id);
+                    // console.log(res.id)
                     $("#modal-input-nama-tabel").val(namaTabel);
                     $("#modal-input-nama-kegiatan").val(res.nama_kegiatan);
                     $("#modal-input-status").val(res.status);
