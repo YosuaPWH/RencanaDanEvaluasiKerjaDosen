@@ -54,7 +54,11 @@
                 Program Studi
             </th>
             <td class="w-4/6">
-                {{ Auth::user()->prodi }}
+                @if (Auth::user()->prodi != null)
+                    {{Auth::user()->prodi}}
+                @else
+                    -
+                @endif
             </td>
         </tr>
         <tr class="border-b">
@@ -62,7 +66,11 @@
                 Status Dosen
             </th>
             <td class="w-4/6">
-                -
+                @if (Auth::user()->status != null)
+                    {{Auth::user()->status}}
+                @else
+                    -
+                @endif
             </td>
         </tr>
         <tr class="border-b bg-gray-200">
@@ -70,7 +78,11 @@
                 Jabatan Fungsional
             </th>
             <td class="w-4/6">
-                {{ Auth::user()->jabatan_fungsional }}
+                @if (Auth::user()->jabatan_fungsional)
+                    {{Auth::user()->jabatan_fungsional}}
+                @else
+                    -
+                @endif
             </td>
         </tr>
         <tr class="border-b">
@@ -78,7 +90,11 @@
                 Jabatan
             </th>
             <td class="w-4/6">
-                -
+                @if (Auth::user()->jabatan != null)
+                    {{Auth::user()->jabatan}}
+                @else
+                    -
+                @endif
             </td>
         </tr>
         <tr class="border-b bg-gray-200">
@@ -86,7 +102,11 @@
                 Status Serdos
             </th>
             <td class="w-4/6">
-                -
+                @if (Auth::user()->status_serdos != null) 
+                    {{Auth::user()->status_serdos}}
+                @else
+                    -
+                @endif
             </td>
         </tr>
         <tr class="border-b">
@@ -94,7 +114,11 @@
                 Nomor Sertifikasi
             </th>
             <td class="w-4/6">
-                -
+                @if (Auth::user()->nomor_sertifikasi != null) 
+                    {{Auth::user()->nomor_sertifikasi}}
+                @else
+                    -
+                @endif
             </td>
         </tr>
         <tr class="border-b bg-gray-200">
@@ -103,9 +127,9 @@
             </th>
             <td class="w-4/6">
                 @if (Auth::user()->keaktifan == 'A')
-                Aktif
+                    Aktif
                 @else
-                Keluar
+                    Keluar
                 @endif
             </td>
         </tr>

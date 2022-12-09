@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\CRUDTableController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
@@ -57,6 +58,8 @@ Route::middleware(['auth'])->group(function() {
         return view('components.edit_data');
     });
 
+    Route::post('biodata/show-edit', [BiodataController::class, 'showEditBiodata']);
     // Route::post('rencana-kerja/{jenisTabel}/')
+    Route::post('biodata/edit', [BiodataController::class, 'editBiodata']);
 
 });

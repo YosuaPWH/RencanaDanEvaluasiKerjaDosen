@@ -13,13 +13,27 @@ class CRUDTableController extends Controller
         $namatabel = $this->getNamaTabel($jenisTabel);
         $url = $this->getUrl($jenisTabel);
 
-        DB::table($namatabel)->insert([
-			'bagian_table' => $request->pelaksanaan,
-			'nama_kegiatan' => $request->namaKegiatan,
-			'status' => $request->status,
-			'jumlah_kegiatan' => $request->jumlahKegiatan,
-            'beban_tugas' => $request->bebanTugas
-		]);
+        $rules = [
+            'namaKegiatan' => 'required',
+            'status' => 'required',
+            'bebanTugas' => 'required|numeric',
+            'jumlahKegiatan' => 'required|numeric'
+        ];
+        
+        $message = [
+            'required' => 'Input :attribute tidak boleh kosong',
+            'numeric' => 'Input :attribute harus berupa angka'
+        ];
+
+        if($this->validate($request, $rules, $message)) {
+            DB::table($namatabel)->insert([
+                'bagian_table' => $request->pelaksanaan,
+                'nama_kegiatan' => $request->namaKegiatan,
+                'status' => $request->status,
+                'jumlah_kegiatan' => $request->jumlahKegiatan,
+                'beban_tugas' => $request->bebanTugas
+            ]);
+        } 
 
         return redirect($url);
     }
@@ -57,9 +71,6 @@ class CRUDTableController extends Controller
 
         $dataTabel = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')->where('id', '=', $request->id)->first();
 
-        // // return view('components.edit_data')->with('tampilData', $dataTabel);
-        // // dd($dataTabel);
-        // // return back();'
         return response()->json($dataTabel, 200);
 
     }

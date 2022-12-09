@@ -71,7 +71,9 @@ class LoginController extends Controller
             $dataUser->save();
         }
 
-        Auth::login($dataUser);
+        $biodata = User::where('id', $userId)->first();
+
+        Auth::login($biodata);
         return redirect('/');
     }
 
@@ -81,7 +83,7 @@ class LoginController extends Controller
         ]);
     }
 
-    function logout(Request $request) {
+    function logout() {
         Auth::logout();
         return redirect('/');
     }

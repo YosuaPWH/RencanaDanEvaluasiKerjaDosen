@@ -21,6 +21,10 @@ return new class extends Migration
             $table->string('nidn');
             $table->string('nip');
             $table->string('jabatan_fungsional');
+            $table->string('status');
+            $table->string('jabatan');
+            $table->string('status_serdos');
+            $table->string('nomor_sertifikasi');
             $table->string('keaktifan');
             $table->rememberToken();
             $table->timestamps();

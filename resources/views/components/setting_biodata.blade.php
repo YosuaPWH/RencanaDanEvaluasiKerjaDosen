@@ -4,48 +4,49 @@
 
 {{-- Dropdown Ubah Data Biodata --}}
 
-<a href="#" data-modal-toggle="updateBiodata" class="text-xs p-2 hover:bg-bluedesign hover:text-whitety bg-whitety text-decoration-none hidden rounded-lg" id="ubah-data">
+<a href="#" onclick="openModals(true)" data-id="{{ Auth::user()->id }}" class="btn-edit-biodata text-xs p-2 hover:bg-bluedesign hover:text-whitety bg-whitety text-decoration-none hidden rounded-lg" id="ubah-data">
     Ubah data
 </a>
 
-<div id="updateBiodata" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="shadow hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
-    <div class="relative w-full max-w-2xl rounded-lg h-full md:h-auto bg-white">
+<div id="updateBiodata" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden inset-0 bg-gray-900 bg-opacity-50  overflow-y-auto overflow-x-hidden fixed w-full top-0 right-0 left-0 z-50 flex justify-center md:inset-0 md:h-full items-start md:items-center pt-10 md:pt-0">
+    <div id="modaledit" class=" transform -translate-y-full  scale-150  relative w-full max-w-2xl rounded-lg h-full md:h-auto bg-white  duration-300">
         {{-- Modal Content --}}
         <div class="relative p-4 bg-whitety rounded-lg shadow sm:p-5">
             {{-- Modal Header --}}
             <div class="header flex justify-between border-b mb-3">
                 <h3>Ubah Biodata</h3>
-                <button type="button" data-modal-toggle="updateBiodata">
+                <button type="button" onclick="openModals(false)">
                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                 </button>
             </div>
             {{-- Modal Body --}}
-            <form action="#">
+            <form action="/biodata/edit" method="POST">
+                @csrf
                 <div>
                     <div class="mb-2">
                         <label for="nama">Nama</label>
-                        <input type="text" name="ubahNama" id="nama" class="form-control">
+                        <input type="text" name="ubahNama" id="nama" class="form-control" disabled>
                     </div>
                     <div class="flex mb-2 justify-between gap-3">
                         <div>
                             <label for="nip">NIP</label>
-                            <input type="text" name="ubahNIP" id="nip" class="form-control">
+                            <input type="text" name="ubahNip" id="nip" class="form-control">
                         </div>
                         <div>
                             <label for="nidn">NIDN</label>
-                            <input type="text" name="ubahNIDN" id="nidn" class="form-control">
+                            <input type="text" name="ubahNidn" id="nidn" class="form-control">
                         </div>
                         <div>
                             <label for="prodi">Program Studi</label>
                             {{-- <input type="text" name="ubahProdi" id="prodi" class="form-control"> --}}
-                            <select name="" id="prodi" class="form-select">
-                                <option value="ti">D3 Teknologi Informasi</option>
-                                <option value="tk">D3 Teknologi Komputer</option>
-                                <option value="trpl">D4 Teknologi Rekayasa Perangkat Lunak</option>
-                                <option value="if">S1 Informatika</option>
-                                <option value="si">S1 Sistem Informasi</option>
-                                <option value="te">S1 Teknik Elektro</option>
-                                <option value="bp">S1 Teknik Bioproses</option>
+                            <select name="prodi" id="prodi" class="form-select">
+                                <option value="D3 Teknologi Informasi">D3 Teknologi Informasi</option>
+                                <option value="D3 Teknologi Komputer">D3 Teknologi Komputer</option>
+                                <option value="D4 Teknologi Rekayasa Perangkat Lunak">D4 Teknologi Rekayasa Perangkat Lunak</option>
+                                <option value="S1 Informatika">S1 Informatika</option>
+                                <option value="S1 Sistem Informasi">S1 Sistem Informasi</option>
+                                <option value="S1 Teknik Elektro">S1 Teknik Elektro</option>
+                                <option value="S1 Teknik Bioproses">S1 Teknik Bioproses</option>
                             </select>
                         </div>
                     </div>
@@ -74,10 +75,72 @@
                 </div>
 
                 <div class="flex justify-end gap-2 mt-4">
-                    <button type="button" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded font-semibold">Simpan</button>
-                    <button type="button" data-modal-toggle="updateBiodata" class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-4 outline-1 outline border-red-600 rounded">Batal</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded font-semibold">Simpan</button>
+                    <button type="button" onclick="openModals(false)" class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-4 outline-1 outline border-red-600 rounded">Batal</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function($) {
+        $('.btn-edit-biodata').on('click', function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            var id = $(this).data('id');
+            // var namaTabel = $(this).data('nama-tabel');
+            // let getUrl = $("#url").text();
+            
+            $.ajax({
+                type: "POST",
+                url: "biodata/show-edit",
+                data: { id: id },
+                dataType: 'json',
+                success: function(res) {
+                    // $("#modal-id").val(res.id);
+                    console.log(res.id);
+                    console.log(res.nama);
+                    console.log(res.prodi);
+                    $("#nama").val(res.nama);
+                    $("#nip").val(res.nip);
+                    $("#nidn").val(res.nidn);
+                    $("#prodi").val(res.prodi);
+                    $("#statusdosen").val(res.status);
+                    $("#jabatan").val(res.jabatan);
+                    $("#jabatanfungsional").val(res.jabatan_fungsional);
+                    // $("#")
+                }
+            });
+        });
+    })
+</script>
+
+<script>
+    function openModals (value){
+        const modal_overlay = document.querySelector('#updateBiodata');
+        const modal = document.querySelector('#modaledit');
+        const modalCl = modal.classList
+        const overlayCl = modal_overlay
+        
+        if(value){
+            overlayCl.classList.remove('hidden')
+        setTimeout(() => {
+            modalCl.remove('opacity-0')
+            modalCl.remove('-translate-y-full')
+            modalCl.remove('scale-150')
+        }, 100);
+        } else {
+        modalCl.add('-translate-y-full')
+        setTimeout(() => {
+            modalCl.add('opacity-0')
+            modalCl.add('scale-150')
+        }, 100);
+        setTimeout(() => overlayCl.classList.add('hidden'), 300);
+        }
+    }
+</script>
