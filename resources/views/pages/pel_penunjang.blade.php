@@ -70,7 +70,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="A. Menjadi anggota dalam suatu panitia/badan pada perguruan tinggi"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="A. Menjadi anggota dalam suatu panitia/badan pada perguruan tinggi"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -125,7 +125,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="B. Menjadi anggota panitia/badan pada lembaga pemerintah"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="B. Menjadi anggota panitia/badan pada lembaga pemerintah"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -180,7 +180,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="C. Menjadi anggota organisasi profesi"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="C. Menjadi anggota organisasi profesi"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -235,7 +235,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="D. Mewakili perguruan tinggi/lembaga pemerintah"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="D. Mewakili perguruan tinggi/lembaga pemerintah"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -290,7 +290,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="E. Menjadi anggota delegasi nasional ke pertemuan internasional"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="E. Menjadi anggota delegasi nasional ke pertemuan internasional"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -345,7 +345,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="F. Berperan serta aktif dalam pertemuan ilmiah"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="F. Berperan serta aktif dalam pertemuan ilmiah"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -400,7 +400,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="G. Mendapat penghargaan/tanda jasa"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="G. Mendapat penghargaan/tanda jasa"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -455,7 +455,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="H. Menulis buku pelajaran SLTA ke bawah yang diterbitkan dan diedarkan secara nasional"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="H. Menulis buku pelajaran SLTA ke bawah yang diterbitkan dan diedarkan secara nasional"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -510,7 +510,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="I. Mempunyai prestasi di bidang olahraga/humaniora"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="I. Mempunyai prestasi di bidang olahraga/humaniora"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -565,7 +565,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="J. Keanggotaan dalam tim penilai/kegiatan lainnya dari Kementerian"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="J. Keanggotaan dalam tim penilai/kegiatan lainnya dari Kementerian"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">

@@ -12,12 +12,11 @@ class CRUDTableController extends Controller
     function tambahData(Request $request, $jenisTabel) {
         $namatabel = $this->getNamaTabel($jenisTabel);
         $url = $this->getUrl($jenisTabel);
-        // dd($request);
 
         if($request->pelaksanaan == "A" && $jenisTabel == "pendidikan") {
             $rules = [
                 'namaKegiatan' => 'required',
-                'status' => 'required',
+                'statusA' => 'required',
                 'rencanaPertemuan' => 'required|numeric',
                 'sksMKTerhitung' => 'required|numeric',
                 'SKSBKD' => 'required|numeric'
@@ -42,7 +41,7 @@ class CRUDTableController extends Controller
                     'id_akun' => Auth::user()->id,
                     'bagian_table' => $request->pelaksanaan,
                     'nama_kegiatan' => $request->namaKegiatan,
-                    'status' => $request->status,
+                    'status' => $request->statusA,
                     'rencana_pertemuan' => $request->rencanaPertemuan,
                     'sks_mk_terhitung' => $request->sksMKTerhitung,
                     'sks_bkd' => $request->SKSBKD
@@ -101,7 +100,11 @@ class CRUDTableController extends Controller
     function showEditData(Request $request, $jenisTabel) {
         $namatabel = $this->getNamaTabel($jenisTabel);
 
-        $dataTabel = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')->where('id', '=', $request->id)->first();
+        if($jenisTabel == "pendidikan") {
+            $dataTabel = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas', 'rencana_pertemuan', 'sks_mk_terhitung', 'sks_bkd')->where('id', '=', $request->id)->first();
+        } else {
+            $dataTabel = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')->where('id', '=', $request->id)->first();
+        }
 
         return response()->json($dataTabel, 200);
 
@@ -110,29 +113,55 @@ class CRUDTableController extends Controller
     function editData(Request $request, $jenisTabel) {
         $namatabel = $this->getNamaTabel($jenisTabel);
 
-        $rules = [
-            'editNamaKegiatan' => 'required',
-            'editStatus' => 'required',
-            'editBebanTugas' => 'required|numeric',
-            'editJumlahKegiatan' => 'required|numeric'
-        ];
-
+        if($this->cekBagianTabel($request->editId, $jenisTabel)->bagian_table == "A" && $jenisTabel == "pendidikan") {
+            $rules = [  
+                'editNamaKegiatan' => 'required',
+                'editStatus' => 'required',
+                'rencanaPertemuan' => 'required|numeric',
+                'editSksMkTerhitung' => 'required|numeric',
+                'editSksBkd' => 'required|numeric'
+            ];
+        } else {
+            $rules = [  
+                'editNamaKegiatan' => 'required',
+                'editStatus' => 'required',
+                'editBebanTugas' => 'required|numeric',
+                'editJumlahKegiatan' => 'required|numeric'
+            ];
+        }
+            
         $message = [
             'required' => 'Input :attribute tidak boleh kosong',
             'numeric' => 'Input :attribute harus berupa angka'
         ];
 
         if($this->validate($request, $rules, $message)) {
+            if($this->cekBagianTabel($request->editId, $jenisTabel)->bagian_table == "A" && $jenisTabel == "pendidikan") {
+                DB::table($namatabel)->where('id', '=', $request->editId)->update([
+                    'nama_kegiatan' => $request->editNamaKegiatan,
+                    'status' => $request->editStatus,
+                    'rencana_pertemuan' => $request->rencanaPertemuan,
+                    'sks_mk_terhitung' => $request->editSksMkTerhitung,
+                    'sks_bkd' => $request->editSksBkd
+                ]);
+            } else {
 
-            DB::table($namatabel)->where('id', '=', $request->editId)->update([
-                'nama_kegiatan' => $request->editNamaKegiatan,
-                'jumlah_kegiatan' => $request->editJumlahKegiatan,
-                'beban_tugas' => $request->editBebanTugas,
-                'status' => $request->editStatus
-            ]);
+                DB::table($namatabel)->where('id', '=', $request->editId)->update([
+                    'nama_kegiatan' => $request->editNamaKegiatan,
+                    'jumlah_kegiatan' => $request->editJumlahKegiatan,
+                    'beban_tugas' => $request->editBebanTugas,
+                    'status' => $request->editStatus
+                ]);
+            }
         } 
         
         return redirect($this->getUrl($jenisTabel));
+    }
+
+    function cekBagianTabel($id, $jenisTabel) {
+        $namatabel = $this->getNamaTabel($jenisTabel);
+
+        return DB::table($namatabel)->select('bagian_table')->where('id', '=', $id)->first();
     }
 
     function hapusData($jenisTabel, Request $request) {

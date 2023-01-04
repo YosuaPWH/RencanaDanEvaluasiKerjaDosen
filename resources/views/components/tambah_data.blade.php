@@ -49,7 +49,7 @@
                                 
                                 <div class="w-1/4">
                                     <label for="status">Status</label><br>
-                                    <select name="status" id="status" class="form-select">
+                                    <select name="statusA" id="status" class="form-select">
                                         <option value="Berlanjut">Berlanjut</option>
                                         <option value="Selesai">Selesai</option>
                                     </select>

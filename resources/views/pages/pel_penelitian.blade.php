@@ -68,7 +68,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="A. Menghasilkan karya ilmiah sesuai dengan bidangnya"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="A. Menghasilkan karya ilmiah sesuai dengan bidangnya"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -123,7 +123,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="B. Hasil penelitian atau hasil pemikiran yang didesiminasikan"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="B. Hasil penelitian atau hasil pemikiran yang didesiminasikan"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -178,7 +178,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="C. Hasil penelitian atau pemikiran atau kerjasama industri termasuk penelitian penugasan dari Kementerian atau LPNK yang tidak dipublikasikan (tersimpan dalam perpustakaan) yang dilakukan secara melembaga"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="C. Hasil penelitian atau pemikiran atau kerjasama industri termasuk penelitian penugasan dari Kementerian atau LPNK yang tidak dipublikasikan (tersimpan dalam perpustakaan) yang dilakukan secara melembaga"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -233,7 +233,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="D. Menerjemahkan/menyadur buku ilmiah yang diterbitkan dan diedarkan secara nasional (Ber-ISBN)"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="D. Menerjemahkan/menyadur buku ilmiah yang diterbitkan dan diedarkan secara nasional (Ber-ISBN)"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -288,7 +288,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="E. Mengedit/menyunting karya ilmiah yang diterbitkan dan diedarkan secara nasional (Ber-ISBN)"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="E. Mengedit/menyunting karya ilmiah yang diterbitkan dan diedarkan secara nasional (Ber-ISBN)"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -343,7 +343,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="F. Membuat rancangan dan karya teknologi yang dipatenkan atau seni yang terdaftar di HaKI"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="F. Membuat rancangan dan karya teknologi yang dipatenkan atau seni yang terdaftar di HaKI"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -398,7 +398,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="G. Rumusan kebijakan yang monumental dalam bentuk arahan/kertas kebijakan (policy brief/policy paper), naskah akademik, model kebijakan strategis atau rekomendasi kebijakan yang berkontribusi terhadap pengembangan kebijakan dan pembangunan"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="G. Rumusan kebijakan yang monumental dalam bentuk arahan/kertas kebijakan (policy brief/policy paper), naskah akademik, model kebijakan strategis atau rekomendasi kebijakan yang berkontribusi terhadap pengembangan kebijakan dan pembangunan"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
@@ -453,7 +453,7 @@
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
                                 <td class="p-2 flex gap-1">
-                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="H. Membuat rancangan dan karya teknologi yang tidak dipatenkan rancangan dan karya seni monumental yang tidak terdaftar di HaKI, tetapi telah dipresentasikan pada forum yang teragenda"  onclick="coba(true)">
+                                    <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="H. Membuat rancangan dan karya teknologi yang tidak dipatenkan rancangan dan karya seni monumental yang tidak terdaftar di HaKI, tetapi telah dipresentasikan pada forum yang teragenda"  onclick="edit(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
