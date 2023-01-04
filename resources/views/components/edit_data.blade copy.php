@@ -19,17 +19,10 @@
                     <div class="mb-4">
                         <input type="text" name="modal-input-pelaksanaan" id="modal-input-nama-tabel" class="form-control" disabled>
                     </div>
-                    @if ($pelaksanaan == "pendidikan")
-                    <div class="mb-2">
-                        <label for="namaKegiatan">Nama Kegiatanssssssssss</label>
-                        <input type="text" name="editNamaKegiatan"  id="modal-input-nama-kegiatan" class="form-control" value="{{ request()->input('modal-input-pelaksanaan')}}">
-                    </div>
-                    @else
                     <div class="mb-2">
                         <label for="namaKegiatan">Nama Kegiatan</label>
                         <input type="text" name="editNamaKegiatan"  id="modal-input-nama-kegiatan" class="form-control">
                     </div>
-                    @endif
                     <div class="flex justify-between gap-3">
                         <div>
                             <label for="status">Status</label><br>

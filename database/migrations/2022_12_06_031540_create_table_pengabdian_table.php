@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('table_pengabdian', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_akun');
             $table->char('bagian_table', 4);
             $table->string('nama_kegiatan');
             $table->string('status');

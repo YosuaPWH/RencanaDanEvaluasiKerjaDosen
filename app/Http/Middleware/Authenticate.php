@@ -19,6 +19,6 @@ class Authenticate extends Middleware
     {   
         if(!Auth::check()) {
             return route('login');
-        } 
+        }
     }
 }

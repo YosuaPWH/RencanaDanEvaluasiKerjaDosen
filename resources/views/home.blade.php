@@ -13,8 +13,16 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <style>
+        .active {
+            background-color: #2A61CD;
+            color: white
+        }
+    </style>
 </head>
-<body class="bg-theme-4 flex opacity-100">
+<body class="bg-theme-4 flex opacity-100">        
+    <p hidden>{{ $currentPage = $_SERVER['PHP_SELF']; }}</p>
     @include('components.alert_error')
     <div class="sidenav w-2/12 text-white  border-r bg-gradient-to-b from-bluedesign to-skydesign h-screen sticky top-0">
         <div class="logo p-3 text-center">
@@ -45,12 +53,12 @@
                 </div>
                 <hr class="mt-0 text-white">
                 <nav class="flex p-0 w-fit rounded-lg">
-                    <a href="/biodata" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white rounded-l-lg font-bold">Biodata</a>
-                    <a href="/rencana-kerja/pendidikan" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Pendidikan</a>
-                    <a href="/rencana-kerja/penelitian" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Penelitian</a>
-                    <a href="/rencana-kerja/pengabdian" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Pengabdian</a>
-                    <a href="/rencana-kerja/penunjang" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold">Pelaksanaan Penunjang</a>
-                    <a href="/simpulan" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white rounded-r-lg font-bold">Simpulan</a>
+                    <a href="/biodata" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white rounded-l-lg font-bold {{ ($currentPage == '/index.php/biodata') ? 'active':'' }}">Biodata</a>
+                    <a href="/rencana-kerja/pendidikan" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold {{ ($currentPage == '/index.php/rencana-kerja/pendidikan') ? 'active':'' }}">Pelaksanaan Pendidikan</a>
+                    <a href="/rencana-kerja/penelitian" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold {{ ($currentPage == '/index.php/rencana-kerja/penelitian') ? 'active':'' }}">Pelaksanaan Penelitian</a>
+                    <a href="/rencana-kerja/pengabdian" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold {{ ($currentPage == '/index.php/rencana-kerja/pengabdian') ? 'active':'' }}">Pelaksanaan Pengabdian</a>
+                    <a href="/rencana-kerja/penunjang" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold {{ ($currentPage == '/index.php/rencana-kerja/penunjang') ? 'active':'' }}">Pelaksanaan Penunjang</a>
+                    <a href="/simpulan" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white rounded-r-lg font-bold {{ ($currentPage == '/index.php/simpulan') ? 'active':'' }}">Simpulan</a>
                 </nav>
                 <div class="konten mt-4">
                     @yield('konten')

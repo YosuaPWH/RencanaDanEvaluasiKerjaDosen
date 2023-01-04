@@ -18,48 +18,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login/auth', [LoginController::class, 'login']);
 
-Route::get('/user/login', function() {
-    return view('login');
-})->name('login');
+Route::middleware('guest')->group(function() {
 
-Route::get('/api/{useraccount}/{token}/{appid}', function(){
-
-})->middleware('auth.token');
-
-Route::get('/user/logout', [LoginController::class, 'logout']);
-
-Route::get('/logut', function() {
-    Auth::logout();
-    dd('berhasil');
+    Route::post('/login/auth', [LoginController::class, 'login']);
+    
+    Route::get('/user/login', function() {
+        return view('login');
+    })->name('login');
 });
 
-Route::middleware(['auth'])->group(function() {
-    Route::get('rencana-kerja/{jenisPelaksanaan}', [CRUDTableController::class, 'tampilData']);
-
+Route::middleware('auth')->group(function() {
+    
     Route::get('biodata', function() {
         return view('pages.biodata');
     });
-
+    
     Route::get('/', function() {
         return view('pages.biodata');
     })->name('home');
 
+    Route::get('rencana-kerja/{jenisPelaksanaan}', [CRUDTableController::class, 'tampilData']);
+    
     Route::post('rencana-kerja/{jenisTabel}/tambah-data', [CRUDTableController::class, 'tambahData']);
 
     Route::post('rencana-kerja/{jenisTabel}/show-edit-data', [CRUDTableController::class, 'showEditData']);
 
     Route::post('rencana-kerja/{jenisTabel}/edit-data', [CRUDTableController::class, 'editData']);
 
-    Route::get('rencana-kerja/{jenisTabel}/hapus-data/{id}', [CRUDTableController::class, 'hapusData']);
-
-    Route::get('cobacoba', function() {
-        return view('components.edit_data');
-    });
+    Route::delete('rencana-kerja/{jenisTabel}/hapus-data', [CRUDTableController::class, 'hapusData']);
 
     Route::post('biodata/show-edit', [BiodataController::class, 'showEditBiodata']);
-    // Route::post('rencana-kerja/{jenisTabel}/')
+
     Route::post('biodata/edit', [BiodataController::class, 'editBiodata']);
+
+    Route::get('/user/logout', [LoginController::class, 'logout']);
 
 });

@@ -4,21 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Models\TablePendidikan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 
 class CRUDTableController extends Controller
 {
     function tambahData(Request $request, $jenisTabel) {
         $namatabel = $this->getNamaTabel($jenisTabel);
         $url = $this->getUrl($jenisTabel);
+        // dd($request);
 
-        $rules = [
-            'namaKegiatan' => 'required',
-            'status' => 'required',
-            'bebanTugas' => 'required|numeric',
-            'jumlahKegiatan' => 'required|numeric'
-        ];
+        if($request->pelaksanaan == "A" && $jenisTabel == "pendidikan") {
+            $rules = [
+                'namaKegiatan' => 'required',
+                'status' => 'required',
+                'rencanaPertemuan' => 'required|numeric',
+                'sksMKTerhitung' => 'required|numeric',
+                'SKSBKD' => 'required|numeric'
+            ];
+        } else {
+            $rules = [
+                'namaKegiatan' => 'required',
+                'status' => 'required',
+                'bebanTugas' => 'required|numeric',
+                'jumlahKegiatan' => 'required|numeric',
+            ];
+        }
         
         $message = [
             'required' => 'Input :attribute tidak boleh kosong',
@@ -26,13 +37,26 @@ class CRUDTableController extends Controller
         ];
 
         if($this->validate($request, $rules, $message)) {
-            DB::table($namatabel)->insert([
-                'bagian_table' => $request->pelaksanaan,
-                'nama_kegiatan' => $request->namaKegiatan,
-                'status' => $request->status,
-                'jumlah_kegiatan' => $request->jumlahKegiatan,
-                'beban_tugas' => $request->bebanTugas
-            ]);
+            if($request->pelaksanaan == "A" && $jenisTabel == "pendidikan") {
+                DB::table($namatabel)->insert([
+                    'id_akun' => Auth::user()->id,
+                    'bagian_table' => $request->pelaksanaan,
+                    'nama_kegiatan' => $request->namaKegiatan,
+                    'status' => $request->status,
+                    'rencana_pertemuan' => $request->rencanaPertemuan,
+                    'sks_mk_terhitung' => $request->sksMKTerhitung,
+                    'sks_bkd' => $request->SKSBKD
+                ]);
+            } else {
+                DB::table($namatabel)->insert([
+                    'id_akun' => Auth::user()->id,
+                    'bagian_table' => $request->pelaksanaan,
+                    'nama_kegiatan' => $request->namaKegiatan,
+                    'status' => $request->status,
+                    'jumlah_kegiatan' => $request->jumlahKegiatan,
+                    'beban_tugas' => $request->bebanTugas
+                ]);
+            }
         } 
 
         return redirect($url);
@@ -40,24 +64,32 @@ class CRUDTableController extends Controller
 
     
     function tampilData($jenisPelaksanaan) {
-        $namatabel = $this->getNamaTabel($jenisPelaksanaan);
         
-        $dataTabel = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')->get();
         if ($jenisPelaksanaan == "pendidikan") {
-            
-            $tabelDataPendidikan = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas', 'rencana_pertemuan', 'sks_mk_terhitung', 'sks_bkd')->get();
+            $namatabel = $this->getNamaTabel($jenisPelaksanaan);
+                    
+            $tabelDataPendidikan = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas', 'rencana_pertemuan', 'sks_mk_terhitung', 'sks_bkd')->where('id_akun', '=', Auth::user()->id)->get();
             
             return view('pages.pel_pendidikan')->with('datapendidikan', $tabelDataPendidikan);
             
         } else if ($jenisPelaksanaan == "penelitian") {
+            $namatabel = $this->getNamaTabel($jenisPelaksanaan);
+        
+            $dataTabel = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')->where('id_akun', '=', Auth::user()->id)->get();
                         
             return view('pages.pel_penelitian')->with('datapenelitian', $dataTabel);
             
         } else if ($jenisPelaksanaan == "pengabdian") {
+            $namatabel = $this->getNamaTabel($jenisPelaksanaan);
+        
+            $dataTabel = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')->where('id_akun', '=', Auth::user()->id)->get();
 
             return view('pages.pel_pengabdian')->with('datapengabdian', $dataTabel);
             
         } else if ($jenisPelaksanaan == "penunjang") {
+            $namatabel = $this->getNamaTabel($jenisPelaksanaan);
+        
+            $dataTabel = DB::table($namatabel)->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')->where('id_akun', '=', Auth::user()->id)->get();
 
             return view('pages.pel_penunjang')->with('datapenunjang', $dataTabel);
             
@@ -103,10 +135,10 @@ class CRUDTableController extends Controller
         return redirect($this->getUrl($jenisTabel));
     }
 
-    function hapusData($jenisTabel, $id) {
+    function hapusData($jenisTabel, Request $request) {
         $namatabel = $this->getNamaTabel($jenisTabel);
 
-        DB::table($namatabel)->delete($id);
+        DB::table($namatabel)->delete($request->delete_id);
 
         return redirect($this->getUrl($jenisTabel));
     }

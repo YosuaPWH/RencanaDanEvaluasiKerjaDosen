@@ -26,18 +26,80 @@
             {{-- Modal Body --}}
             <form action="/rencana-kerja/{{ $jns_table }}/tambah-data" method="POST">
                 @csrf
+                @if ($jns_table == "pendidikan")
+                    <div>
+                        <div class="mb-4">
+                            <select name="pelaksanaan" id="pel" style="width: 100%" onchange="ifPendidikanA(this)">
+                                <option selected value="{{ $data[0][0] }}">{{ $data[0] }}</option>
+                                @for ($i = 1; $i < count($data); $i++)
+                                    <option value="{{ $data[$i][0] }}" name="">{{ $data[$i] }}</option>
+                                @endfor
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label for="namaKegiatan">Nama Kegiatan</label>
+                            <input type="text" name="namaKegiatan" id="tambahKegiatan" class="form-control" placeholder="Nama kegiatan">
+                        </div>
+                        <div id="ifA" class="d-block">
+                            <div class="flex justify-between gap-3 mb-2">
+                                <div class="w-3/4">
+                                    <label for="status">Rencana Pertemuan</label><br>
+                                    <input type="text" name="rencanaPertemuan" id="rencanaPertemuan" class="form-control" placeholder="Jumlah pertemuan">
+                                </div>
+                                
+                                <div class="w-1/4">
+                                    <label for="status">Status</label><br>
+                                    <select name="status" id="status" class="form-select">
+                                        <option value="Berlanjut">Berlanjut</option>
+                                        <option value="Selesai">Selesai</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex justify-between gap-3">
+                                <div class="w-1/2">
+                                    <label for="sksMKTerhitung">SKS MK Terhitung</label>
+                                    <input type="text" name="sksMKTerhitung" id="sksMKTerhitung" class="form-control" placeholder="Contoh: 2.63">
+                                </div>
+                                <div class="w-1/2">
+                                    <label for="SKSBKD">SKS BKD</label>
+                                    <input type="text" name="SKSBKD" id="SKSBDKD" class="form-control" placeholder="Contoh: 2.625">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="ifNotA" class="d-none">
+                            <div class="flex justify-between gap-3">
+                                <div>
+                                    <label for="status">Status</label><br>
+                                    <select name="status" id="status" class="form-select">
+                                        <option value="Berlanjut">Berlanjut</option>
+                                        <option value="Selesai">Selesai</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="jlhKegiatan">Jumlah Kegiatan</label>
+                                    <input type="text" name="jumlahKegiatan" id="tambahJlhKegiatan" class="form-control" placeholder="Contoh: 1, 2, 3, ...">
+                                </div>
+                                <div>
+                                    <label for="bebanTugas">Beban Tugas</label>
+                                    <input type="text" name="bebanTugas" id="tambahBebanTugas" class="form-control" placeholder="Contoh: 0.5, 1, 2, ...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @else
                 <div>
                     <div class="mb-4">
                         <select name="pelaksanaan" id="pel" style="width: 100%">
-                            <option selected disabled >-- Pilih Pelaksanaan --</option>
-                            @foreach ($data as $dt)
-                            <option value="{{ $dt[0]}}" name="">{{ $dt }}</option>
-                            @endforeach
+                            <option selected value="{{ $data[0][0] }}">{{ $data[0] }}</option>
+                            @for ($i = 1; $i < count($data); $i++)
+                                <option value="{{ $data[$i][0] }}" name="">{{ $data[$i] }}</option>
+                            @endfor
                         </select>
                     </div>
                     <div class="mb-2">
                         <label for="namaKegiatan">Nama Kegiatan</label>
-                        <input type="text" name="namaKegiatan" id="tambahKegiatan" class="form-control">
+                        <input type="text" name="namaKegiatan" id="tambahKegiatan" class="form-control" placeholder="Nama kegiatan">
                     </div>
                     <div class="flex justify-between gap-3">
                         <div>
@@ -48,15 +110,16 @@
                             </select>
                         </div>
                         <div>
-                            <label for="bebanTugas">Beban Tugas</label>
-                            <input type="text" name="bebanTugas" id="tambahBebanTugas" class="form-control">
+                            <label for="jlhKegiatan">Jumlah Kegiatan</label>
+                            <input type="text" name="jumlahKegiatan" id="tambahJlhKegiatan" class="form-control" placeholder="Contoh: 1, 2, 3, ...">
                         </div>
                         <div>
-                            <label for="jlhKegiatan">Jumlah Kegiatan</label>
-                            <input type="text" name="jumlahKegiatan" id="tambahJlhKegiatan" class="form-control">
+                            <label for="bebanTugas">Beban Tugas</label>
+                            <input type="text" name="bebanTugas" id="tambahBebanTugas" class="form-control" placeholder="Contoh: 0.5, 1, 2, ...">
                         </div>
                     </div>
                 </div>
+                @endif
                 
                 <div class="flex justify-end gap-2 mt-4">
                     <button type="submit" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded font-semibold">Simpan</button>
@@ -68,6 +131,23 @@
 </div>
 
 <script>
+    function ifPendidikanA(selectObject) {
+        var value = selectObject.value
+        const ifA = document.getElementById("ifA").classList
+        const ifNotA = document.getElementById("ifNotA").classList
+        console.log(value)
+        if (value == "A") {
+            ifA.replace('d-none', 'd-block')
+            ifNotA.replace('d-block', 'd-none')
+        } else {
+            ifA.replace('d-block', 'd-none')
+            ifNotA.replace('d-none', 'd-block')
+        }
+    }
+</script>
+
+
+<script>
     
     function openModals (value){
         const modal_overlay = document.querySelector('#modal_overlay_tambah');
@@ -77,18 +157,18 @@
         
         if(value){
             overlayCl.classList.remove('hidden')
-        setTimeout(() => {
-            modalCl.remove('opacity-0')
-            modalCl.remove('-translate-y-full')
-            modalCl.remove('scale-150')
-        }, 100);
+            setTimeout(() => {
+                modalCl.remove('opacity-0')
+                modalCl.remove('-translate-y-full')
+                modalCl.remove('scale-150')
+            }, 100);
         } else {
-        modalCl.add('-translate-y-full')
-        setTimeout(() => {
-            modalCl.add('opacity-0')
-            modalCl.add('scale-150')
-        }, 100);
-        setTimeout(() => overlayCl.classList.add('hidden'), 300);
+            modalCl.add('-translate-y-full')
+            setTimeout(() => {
+                modalCl.add('opacity-0')
+                modalCl.add('scale-150')
+            }, 100);
+            setTimeout(() => overlayCl.classList.add('hidden'), 300);
         }
     }
 </script>

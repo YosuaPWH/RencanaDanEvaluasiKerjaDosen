@@ -25,6 +25,7 @@
 </script>
 
 @include('components.edit_data', ['url' => "/rencana-kerja/penelitian/show-edit-data", 'pelaksanaan' => 'penelitian'])
+@include('components.delete_confirm', ['url' => "penelitian/hapus-data/"])
 
 <div>
     @include('components.tambah_data', array('data' => array(
@@ -66,11 +67,11 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
-                                <td class="p-2">
+                                <td class="p-2 flex gap-1">
                                     <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="A. Menghasilkan karya ilmiah sesuai dengan bidangnya"  onclick="coba(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
-                                    <a href="penelitian/hapus-data/{{ $data->id }}">
+                                    <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
                                         <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
@@ -121,11 +122,11 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
-                                <td class="p-2">
+                                <td class="p-2 flex gap-1">
                                     <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="B. Hasil penelitian atau hasil pemikiran yang didesiminasikan"  onclick="coba(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
-                                    <a href="penelitian/hapus-data/{{ $data->id }}">
+                                    <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
                                         <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
@@ -176,11 +177,11 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
-                                <td class="p-2">
+                                <td class="p-2 flex gap-1">
                                     <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="C. Hasil penelitian atau pemikiran atau kerjasama industri termasuk penelitian penugasan dari Kementerian atau LPNK yang tidak dipublikasikan (tersimpan dalam perpustakaan) yang dilakukan secara melembaga"  onclick="coba(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
-                                    <a href="penelitian/hapus-data/{{ $data->id }}">
+                                    <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
                                         <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
@@ -231,11 +232,11 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
-                                <td class="p-2">
+                                <td class="p-2 flex gap-1">
                                     <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="D. Menerjemahkan/menyadur buku ilmiah yang diterbitkan dan diedarkan secara nasional (Ber-ISBN)"  onclick="coba(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
-                                    <a href="penelitian/hapus-data/{{ $data->id }}">
+                                    <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
                                         <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
@@ -286,11 +287,11 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
-                                <td class="p-2">
+                                <td class="p-2 flex gap-1">
                                     <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="E. Mengedit/menyunting karya ilmiah yang diterbitkan dan diedarkan secara nasional (Ber-ISBN)"  onclick="coba(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
-                                    <a href="penelitian/hapus-data/{{ $data->id }}">
+                                    <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
                                         <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
@@ -341,11 +342,11 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
-                                <td class="p-2">
+                                <td class="p-2 flex gap-1">
                                     <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="F. Membuat rancangan dan karya teknologi yang dipatenkan atau seni yang terdaftar di HaKI"  onclick="coba(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
-                                    <a href="penelitian/hapus-data/{{ $data->id }}">
+                                    <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
                                         <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
@@ -396,11 +397,11 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
-                                <td class="p-2">
+                                <td class="p-2 flex gap-1">
                                     <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="G. Rumusan kebijakan yang monumental dalam bentuk arahan/kertas kebijakan (policy brief/policy paper), naskah akademik, model kebijakan strategis atau rekomendasi kebijakan yang berkontribusi terhadap pengembangan kebijakan dan pembangunan"  onclick="coba(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
-                                    <a href="penelitian/hapus-data/{{ $data->id }}">
+                                    <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
                                         <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
@@ -451,11 +452,11 @@
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->jumlah_kegiatan }}</td>
                                 <td class="p-2">{{ $data->beban_tugas + 0 }}</td>
-                                <td class="p-2">
+                                <td class="p-2 flex gap-1">
                                     <a href="javascript:void(0)" class="btn-edit" data-id="{{ $data->id }}" data-nama-tabel="H. Membuat rancangan dan karya teknologi yang tidak dipatenkan rancangan dan karya seni monumental yang tidak terdaftar di HaKI, tetapi telah dipresentasikan pada forum yang teragenda"  onclick="coba(true)">
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
-                                    <a href="penelitian/hapus-data/{{ $data->id }}">
+                                    <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
                                         <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
