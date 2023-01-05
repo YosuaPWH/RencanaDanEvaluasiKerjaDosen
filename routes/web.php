@@ -30,13 +30,14 @@ Route::middleware('guest')->group(function() {
 
 Route::middleware('auth')->group(function() {
     
-    Route::get('biodata', function() {
+    Route::get('rencana-kerja/biodata', function() {
         return view('pages.biodata');
     });
     
     Route::get('/', function() {
         return view('pages.biodata');
     })->name('home');
+
 
     Route::get('rencana-kerja/{jenisPelaksanaan}', [CRUDTableController::class, 'tampilData']);
     
@@ -48,10 +49,14 @@ Route::middleware('auth')->group(function() {
 
     Route::delete('rencana-kerja/{jenisTabel}/hapus-data', [CRUDTableController::class, 'hapusData']);
 
-    Route::post('biodata/show-edit', [BiodataController::class, 'showEditBiodata']);
+    Route::post('rencana-kerja/biodata/show-edit', [BiodataController::class, 'showEditBiodata']);
 
-    Route::post('biodata/edit', [BiodataController::class, 'editBiodata']);
+    Route::post('rencana-kerja/biodata/', [BiodataController::class, 'editBiodata']);
 
     Route::get('/user/logout', [LoginController::class, 'logout']);
+
+    Route::get('/rencana-kerja', function () {
+        return view('pages.rencana_kerja');
+    });
 
 });

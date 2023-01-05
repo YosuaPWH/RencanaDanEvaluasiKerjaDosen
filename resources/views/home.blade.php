@@ -22,7 +22,6 @@
     </style>
 </head>
 <body class="bg-theme-4 flex opacity-100">        
-    <p hidden>{{ $currentPage = $_SERVER['PHP_SELF']; }}</p>
     @include('components.alert_error')
     <div class="sidenav w-2/12 text-white  border-r bg-gradient-to-b from-bluedesign to-skydesign h-screen sticky top-0">
         <div class="logo p-3 text-center">
@@ -38,7 +37,6 @@
             <div class="flex">
                 <div class="items-center flex gap-3">
                     {{ Auth::user()->nama }}
-                    @include('components.notifications')
                 </div>
                 <i class="bi bi-person-circle p-2 text-white"></i>
             </div>
@@ -49,17 +47,9 @@
                 @include('components.breadcrumb')
                 <div class="flex">
                     @include('components.iconHall')
-                    <h4 class="text-black mt-auto mr-auto mb-auto">Rencana Beban Kerja Dosen - Semester Genap 2022/2023</h4>
+                    <h4 class="text-black mt-auto mr-auto mb-auto">Rencana Beban Kerja Dosen @yield('periode')</h4>
                 </div>
                 <hr class="mt-0 text-white">
-                <nav class="flex p-0 w-fit rounded-lg">
-                    <a href="/biodata" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white rounded-l-lg font-bold {{ ($currentPage == '/index.php/biodata') ? 'active':'' }}">Biodata</a>
-                    <a href="/rencana-kerja/pendidikan" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold {{ ($currentPage == '/index.php/rencana-kerja/pendidikan') ? 'active':'' }}">Pelaksanaan Pendidikan</a>
-                    <a href="/rencana-kerja/penelitian" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold {{ ($currentPage == '/index.php/rencana-kerja/penelitian') ? 'active':'' }}">Pelaksanaan Penelitian</a>
-                    <a href="/rencana-kerja/pengabdian" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold {{ ($currentPage == '/index.php/rencana-kerja/pengabdian') ? 'active':'' }}">Pelaksanaan Pengabdian</a>
-                    <a href="/rencana-kerja/penunjang" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold {{ ($currentPage == '/index.php/rencana-kerja/penunjang') ? 'active':'' }}">Pelaksanaan Penunjang</a>
-                    <a href="/simpulan" class="bg-whitety p-3 hover:bg-bluedesign hover:text-white rounded-r-lg font-bold {{ ($currentPage == '/index.php/simpulan') ? 'active':'' }}">Simpulan</a>
-                </nav>
                 <div class="konten mt-4">
                     @yield('konten')
                 </div>

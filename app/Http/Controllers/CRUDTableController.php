@@ -18,8 +18,8 @@ class CRUDTableController extends Controller
                 'namaKegiatan' => 'required',
                 'statusA' => 'required',
                 'rencanaPertemuan' => 'required|numeric',
-                'sksMKTerhitung' => 'required|numeric',
-                'SKSBKD' => 'required|numeric'
+                'sksMkTerhitung' => 'required|numeric',
+                'SksBkd' => 'required|numeric'
             ];
         } else {
             $rules = [
@@ -43,8 +43,8 @@ class CRUDTableController extends Controller
                     'nama_kegiatan' => $request->namaKegiatan,
                     'status' => $request->statusA,
                     'rencana_pertemuan' => $request->rencanaPertemuan,
-                    'sks_mk_terhitung' => $request->sksMKTerhitung,
-                    'sks_bkd' => $request->SKSBKD
+                    'sks_mk_terhitung' => $request->sksMkTerhitung,
+                    'sks_bkd' => $request->SksBkd
                 ]);
             } else {
                 DB::table($namatabel)->insert([

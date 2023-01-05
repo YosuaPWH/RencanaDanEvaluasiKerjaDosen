@@ -20,7 +20,7 @@
                 </button>
             </div>
             {{-- Modal Body --}}
-            <form action="/biodata/edit" method="POST">
+            <form action="biodata" method="POST">
                 @csrf
                 <div>
                     <div class="mb-2">
@@ -106,6 +106,7 @@
                     console.log(res.id);
                     console.log(res.nama);
                     console.log(res.prodi);
+                    console.log(res.status);
                     $("#nama").val(res.nama);
                     $("#nip").val(res.nip);
                     $("#nidn").val(res.nidn);

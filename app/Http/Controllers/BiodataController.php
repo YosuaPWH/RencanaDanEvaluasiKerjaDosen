@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class BiodataController extends Controller
 {
     function showEditBiodata(Request $request) {
-        $dataBiodata = DB::table('users')->select('id', 'nama', 'prodi', 'jabatan', 'email', 'nidn', 'nip', 'jabatan_fungsional', 'keaktifan')->where('id', '=', $request->id)->first();
+        $dataBiodata = DB::table('users')->select('id', 'nama', 'prodi', 'jabatan', 'status', 'email', 'nidn', 'nip', 'jabatan_fungsional', 'keaktifan')->where('id', '=', $request->id)->first();
 
         return response()->json($dataBiodata, 200);
     }
@@ -39,6 +39,6 @@ class BiodataController extends Controller
             ]);
         }
 
-        return redirect('biodata');
+        return redirect('rencana-kerja/biodata');
     }
 }

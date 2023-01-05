@@ -58,11 +58,11 @@
                             <div class="flex justify-between gap-3">
                                 <div class="w-1/2">
                                     <label for="sksMKTerhitung">SKS MK Terhitung</label>
-                                    <input type="text" name="sksMKTerhitung" id="sksMKTerhitung" class="form-control" placeholder="Contoh: 2.63">
+                                    <input type="text" name="sksMkTerhitung" id="sksMKTerhitung" class="form-control" placeholder="Contoh: 2.63">
                                 </div>
                                 <div class="w-1/2">
-                                    <label for="SKSBKD">SKS BKD</label>
-                                    <input type="text" name="SKSBKD" id="SKSBDKD" class="form-control" placeholder="Contoh: 2.625">
+                                    <label for="SksBkd">SKS BKD</label>
+                                    <input type="text" name="SksBkd" id="SKSBDKD" class="form-control" placeholder="Contoh: 2.625">
                                 </div>
                             </div>
                         </div>

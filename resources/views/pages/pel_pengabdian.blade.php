@@ -2,6 +2,7 @@
 
 @section('page-title', 'Rencana - Pengabdian')
 @section('breadcrumb-title', 'Pelaksanaan Pengabdian')
+@section('periode', '- Semester Genap 2022/2023')
 
 @section('konten')
 <script>
@@ -26,6 +27,7 @@
 
 @include('components.edit_data', ['url' => "/rencana-kerja/pengabdian/show-edit-data", 'pelaksanaan' => 'pengabdian'])
 @include('components.delete_confirm', ['url' => "pengabdian/hapus-data/"])
+@include('components.nav_rencana_kerja')
 
 <div>
     @include('components.tambah_data', array('data' => array(
@@ -70,7 +72,7 @@
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
-                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 focus:bg-red-600 focus:text-white outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
                             </tr>
@@ -125,7 +127,7 @@
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
-                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 focus:bg-red-600 focus:text-white outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
                             </tr>
@@ -180,7 +182,7 @@
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
-                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 focus:bg-red-600 focus:text-white outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
                             </tr>
@@ -235,7 +237,7 @@
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
-                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 focus:bg-red-600 focus:text-white outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
                             </tr>
@@ -290,7 +292,7 @@
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
-                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 focus:bg-red-600 focus:text-white outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
                             </tr>
@@ -345,7 +347,7 @@
                                         <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</button>
                                     </a>
                                     <a href="javascript:void(0)" class="btn-hapus" data-id="{{ $data->id }}" onclick="hapus(true)">
-                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 outline-1 outline border-red-600 rounded">Hapus</button>
+                                        <button class="hover:bg-red-600 text-red-600 font-semibold hover:text-white py-2 px-2 focus:bg-red-600 focus:text-white outline-1 outline border-red-600 rounded">Hapus</button>
                                     </a>
                                 </td>
                             </tr>

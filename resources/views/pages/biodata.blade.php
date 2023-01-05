@@ -2,8 +2,11 @@
 
 @section('page-title', 'Biodata')
 @section('breadcrumb-title', 'Biodata')
+@section('periode', '- Semester Genap 2022/2023')
 
 @section('konten')
+@include('components.nav_rencana_kerja')
+
 <div class=" mb-1 w-fit ml-auto">
     @include('components.setting_biodata')
 </div>
