@@ -41,6 +41,13 @@ class LoginController extends Controller
         $responseDataDosen = Http::withToken($token)->asForm()->post('https://cis-dev.del.ac.id/api/library-api/dosen?userid='.$userId)->body();
         $jsonDataDosen = json_decode($responseDataDosen, true);
         
+        if(sizeof($jsonDataDosen['data']['dosen']) == 0) {
+            return Redirect::back()
+                ->withInput()
+                ->withErrors(['password' => 'salah']);
+        }
+
+
         $nama = $jsonDataDosen['data']['dosen'][0]['nama'];
         $prodi = $jsonDataDosen['data']['dosen'][0]['prodi'];
         $email = $jsonDataDosen['data']['dosen'][0]['email'];
