@@ -14,6 +14,6 @@
     <a href="/rencana-kerja/penunjang"
         class="bg-whitety p-3 hover:bg-bluedesign hover:text-white font-bold {{ ($currentPage == '/index.php/rencana-kerja/penunjang') ? 'active':'' }}">Pelaksanaan
         Penunjang</a>
-    <a href="/simpulan"
-        class="bg-whitety p-3 hover:bg-bluedesign hover:text-white rounded-r-lg font-bold {{ ($currentPage == '/index.php/simpulan') ? 'active':'' }}">Simpulan</a>
+    <a href="/rencana-kerja/simpulan"
+        class="bg-whitety p-3 hover:bg-bluedesign hover:text-white rounded-r-lg font-bold {{ ($currentPage == '/index.php/rencana-kerja/simpulan') ? 'active':'' }}">Simpulan</a>
 </nav>

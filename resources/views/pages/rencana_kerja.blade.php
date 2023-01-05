@@ -1,12 +1,11 @@
 @extends('home')
 
 @section('page-title', 'Rencana Kerja')
-@section('breadcrumb-title', '')
 
 @section('konten')
 <div class="bg-white rounded-lg p-2 border mb-2">
     <div class="bg-white rounded-lg p-2 border mb-2">
-        <div class="border rounded-lg overflow-auto d-block" id="bagianB">
+        <div class="border rounded-lg overflow-auto">
             <table class="w-full ">
                 <thead>
                     <tr class="bg-theme-4">

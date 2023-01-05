@@ -65,21 +65,23 @@
                         <th class="p-2 border-r-2 ">SKS MK Terhitung</th>
                         <th class="p-2 border-r-2">SKS BKD</th>
                         <th class="p-2 border-r-2">Status</th>
-                        <th class="p-2">Status Penilaian</th>
                         <th class="p-2 border-r-2 hidden w-2/12" id="bagianButtonA"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <span class="hidden">{{ $byk = 0 }}</span>
+                    <span hidden>{{ $byk = 0 }}</span>
+                    <span hidden>{{ $totalSKSMKTerhitung = 0 }}</span>
+                    <span hidden>{{ $totalSKSBKD = 0 }}</span>
                     @foreach ($datapendidikan as $data)
                         @if ($data->bagian_table == "A")
                             <tr>
+                                <span hidden>{{ $totalSKSMKTerhitung += $data->sks_mk_terhitung + 0 }}</span>
+                                <span hidden>{{ $totalSKSBKD += $data->sks_bkd + 0 }}</span>
                                 <td class="p-2">{{ $byk+=1 }}</td>
                                 <td class="p-2">{{ $data->nama_kegiatan }}</td>
                                 <td class="p-2">{{ $data->rencana_pertemuan }} Pertemuan</td>
                                 <td class="p-2">{{ $data->sks_mk_terhitung + 0 }} SKS</td>
                                 <td class="p-2">{{ $data->sks_bkd + 0 }} SKS</td>
-                                <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2">{{ $data->status }}</td>
                                 <td class="p-2 flex gap-1">
                                     <a href="javascript:void(0)" class="btn-edit-A" data-id="{{ $data->id }}" data-nama-tabel="A. Melaksanakan perkuliahan (tutorial tatap muka, dan/atau daring) dan membimbing, menguji serta menyelenggarakan pendidikan di laboratorium, praktik keguruan bengkel/studio/kebun (tatap muka dan/atau daring) pada institusi pendidikan sesuai penugasan"  onclick="editA(true)">
@@ -99,6 +101,13 @@
                             </td>
                         </tr>
                     @else
+                        <tr class="bg-blue-300 font-bold">
+                            <td class="p-2 text-center" colspan="3">Total SKS</td>
+                            <td class="p-2">{{ $totalSKSMKTerhitung }}</td>
+                            <td class="p-2">{{ $totalSKSBKD }}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
                         <script>
                             tambahKolom("bagianButtonA");
                         </script>

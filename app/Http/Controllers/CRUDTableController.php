@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TablePendidikan;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -46,6 +47,8 @@ class CRUDTableController extends Controller
                     'sks_mk_terhitung' => $request->sksMkTerhitung,
                     'sks_bkd' => $request->SksBkd
                 ]);
+                // $pendidikanSKS = DB::table('table_simpulan')
+                DB::table('table_simpulan')->where('id_akun', '=', Auth::user()->id)->increment($jenisTabel, $request->SksBkd);
             } else {
                 DB::table($namatabel)->insert([
                     'id_akun' => Auth::user()->id,
@@ -55,6 +58,7 @@ class CRUDTableController extends Controller
                     'jumlah_kegiatan' => $request->jumlahKegiatan,
                     'beban_tugas' => $request->bebanTugas
                 ]);
+                DB::table('table_simpulan')->where('id_akun', '=', Auth::user()->id)->increment($jenisTabel, $request->bebanTugas);
             }
         } 
 
@@ -167,7 +171,17 @@ class CRUDTableController extends Controller
     function hapusData($jenisTabel, Request $request) {
         $namatabel = $this->getNamaTabel($jenisTabel);
 
+        $bagian = DB::table($namatabel)->where('id', '=', $request->delete_id)->first()->bagian_table;
+        
+        if ($jenisTabel == "pendidikan" && $bagian == "A") {
+            $bebanTugas = DB::table($namatabel)->where('id', '=', $request->delete_id)->first()->sks_bkd;
+        } else {
+            $bebanTugas = DB::table($namatabel)->where('id', '=', $request->delete_id)->first()->beban_tugas;
+        }
+
         DB::table($namatabel)->delete($request->delete_id);
+
+        DB::table('table_simpulan')->where('id_akun', '=', Auth::user()->id)->decrement($jenisTabel, $bebanTugas);
 
         return redirect($this->getUrl($jenisTabel));
     }

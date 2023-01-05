@@ -6,6 +6,7 @@ use App\Helpers\AuthUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 
@@ -76,6 +77,17 @@ class LoginController extends Controller
         // Cek apakah data sudah ada di dalam database, jika belum akan dibuat data baru di dalam database
         if (!$cekApakahAdaId) {
             $dataUser->save();
+        }
+
+        $cekApakahAdaIdDiSimpulan = DB::table('table_simpulan')->where('id_akun', '=', $userId)->first();
+        if ($cekApakahAdaIdDiSimpulan == null) {
+            DB::table('table_simpulan')->insert([
+                'id_akun' => $userId,
+                'pendidikan' => 0,
+                'penelitian' => 0,
+                'pengabdian' => 0,
+                'penunjang' => 0
+            ]);
         }
 
         $biodata = User::where('id', $userId)->first();

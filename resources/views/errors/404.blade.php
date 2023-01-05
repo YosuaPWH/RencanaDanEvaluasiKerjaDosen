@@ -17,7 +17,7 @@
 <body class="bg-theme-4 flex">
     <div class="w-full text-white  border-r bg-gradient-to-b from-bluedesign to-skydesign h-screen flex justify-center">
         <div class="self-center text-center">
-            <h1>NOT FOUND 404</h1>
+            <h1>ERROR 404</h1>
             <h5>Halaman yang anda tuju tidak dapat ditemukan</h5>
         </div>
     </div>

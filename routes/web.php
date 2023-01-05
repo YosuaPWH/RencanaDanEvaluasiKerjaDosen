@@ -3,6 +3,7 @@
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\CRUDTableController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SimpulanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,9 +36,14 @@ Route::middleware('auth')->group(function() {
     });
     
     Route::get('/', function() {
-        return view('pages.biodata');
+        return view('pages.rencana_kerja');
     })->name('home');
 
+    // Route::get('rencana-kerja/simpulan', function () {
+    //     return view('pages.simpulan');
+    // });
+
+    Route::get('rencana-kerja/simpulan', [SimpulanController::class, 'tampilSimpulan']);
 
     Route::get('rencana-kerja/{jenisPelaksanaan}', [CRUDTableController::class, 'tampilData']);
     
@@ -58,5 +64,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/rencana-kerja', function () {
         return view('pages.rencana_kerja');
     });
+
+    
 
 });
