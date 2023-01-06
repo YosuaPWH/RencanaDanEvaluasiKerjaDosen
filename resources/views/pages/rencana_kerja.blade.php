@@ -15,26 +15,18 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <td class="p-2">2022/2023 Genap</td>
+                        <td class="p-2">
+                            <a href="/2223-2/rencana-kerja/biodata">
+                                <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Lihat Rencana Kerja Dosen</button>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="p-2">2022/2023 Ganjil</td>
                         <td class="p-2">
-                            <a href="/rencana-kerja/biodata">
-                                <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Lihat Rencana Kerja Dosen</button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="p-2">2021/2022 Genap</td>
-                        <td class="p-2">
-                            <a href="/rencana-kerja/pendidikan">
-                                <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Lihat Rencana Kerja Dosen</button>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="p-2">2021/2022 Ganjil</td>
-                        <td class="p-2">
-                            <a href="/rencana-kerja/pendidikan">
-                                <button class=" py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Lihat Rencana Kerja Dosen</button>
+                            <a href="/2223-1/rencana-kerja/biodata">
+                                <button class="py-2 px-3 bg-blue-500 hover:bg-blue-600 text-white rounded">Lihat Rencana Kerja Dosen</button>
                             </a>
                         </td>
                     </tr>

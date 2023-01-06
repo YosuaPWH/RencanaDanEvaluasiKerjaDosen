@@ -14,7 +14,8 @@
     <table class="w-full rounded-lg">
         <tr class="font-medium bg-gray-200">
             <th class="p-2">
-                Nama
+                {{-- Nama --}}
+                {{ Auth::user()->periode }}
             </th>
             <td class="w-4/6">
                 {{ Auth::user()->nama }}

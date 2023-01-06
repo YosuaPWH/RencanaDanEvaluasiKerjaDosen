@@ -24,7 +24,7 @@
                 </button>
             </div>
             {{-- Modal Body --}}
-            <form action="/rencana-kerja/{{ $jns_table }}/tambah-data" method="POST">
+            <form action="/{{ Auth::user()->periode }}/rencana-kerja/{{ $jns_table }}/tambah-data" method="POST">
                 @csrf
                 @if ($jns_table == "pendidikan")
                     <div>

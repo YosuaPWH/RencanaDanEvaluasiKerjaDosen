@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('status');
             $table->integer('jumlah_kegiatan');
             $table->decimal('beban_tugas', 8, 4);
+            $table->string('periode');
             $table->timestamps();
         });
     }

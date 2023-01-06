@@ -49,7 +49,13 @@
                                             <td class="p-2">Tidak boleh kosong</td>
                                             <td class="p-2">{{ $data->pendidikan + 0 }}</td>
                                             <td class="p-2">0</td>
-                                            <td class="p-2">M</td>
+                                            <td class="p-2">
+                                                @if ($data->pendidikan == 0)
+                                                    TM
+                                                @else
+                                                    M
+                                                @endif
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td class="p-2">2</td>
@@ -57,7 +63,13 @@
                                             <td class="p-2">Tidak boleh kosong</td>
                                             <td class="p-2">{{ $data->penelitian + 0 }}</td>
                                             <td class="p-2">0</td>
-                                            <td class="p-2">M</td>
+                                            <td class="p-2">
+                                                @if ($data->penelitian == 0)
+                                                    TM
+                                                @else
+                                                    M
+                                                @endif
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td class="p-2">3</td>
@@ -65,7 +77,13 @@
                                             <td class="p-2">Tidak boleh kosong</td>
                                             <td class="p-2">{{ $data->pengabdian + 0 }}</td>
                                             <td class="p-2">0</td>
-                                            <td class="p-2">M</td>
+                                            <td class="p-2">
+                                                @if ($data->pengabdian == 0)
+                                                    TM
+                                                @else
+                                                    M
+                                                @endif
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td class="p-2">4</td>
@@ -73,7 +91,13 @@
                                             <td class="p-2">Tidak boleh kosong</td>
                                             <td class="p-2">{{ $data->penunjang + 0}}</td>
                                             <td class="p-2">0</td>
-                                            <td class="p-2">M</td>
+                                            <td class="p-2">
+                                                @if ($data->penunjang == 0)
+                                                    TM
+                                                @else
+                                                    M
+                                                @endif
+                                            </td>
                                         </tr>
                                         <tr class="bg-yellow-100 italic">
                                             <td class="p-2"></td>
@@ -81,7 +105,13 @@
                                             <td class="p-2">Minimal 9 SKS</td>
                                             <td class="p-2">{{ (float)$data->pendidikan + (float)$data->penelitian + 0 }}</td>
                                             <td class="p-2">0</td>
-                                            <td class="p-2">M</td>
+                                            <td class="p-2">
+                                                @if (($data->pendidikan + $data->penelitian) >= 9)
+                                                    M
+                                                @else
+                                                    TM
+                                                @endif
+                                            </td>
                                         </tr>
                                         <tr class="bg-yellow-100 italic">
                                             <td class="p-2"></td>
@@ -89,14 +119,26 @@
                                             <td class="p-2">Tidak boleh kosong</td>
                                             <td class="p-2">{{ (float)$data->pengabdian + (float)$data->penunjang + 0 }}</td>
                                             <td class="p-2">0</td>
-                                            <td class="p-2">M</td>
+                                            <td class="p-2">
+                                                @if (($data->pengabdian + $data->penunjang) > 0)
+                                                    M
+                                                @else
+                                                    TM
+                                                @endif
+                                            </td>
                                         </tr>
                                         <tr class="bg-blue-300">
                                             <td class="p-2" colspan="2">Total Kinerja</td>
                                             <td class="p-2">Minimal 12 SKS dan Maksimal 16 SKS</td>
                                             <td class="p-2">{{ (float)$data->pendidikan + (float)$data->penelitian + (float)$data->pengabdian + (float)$data->penunjang + 0 }}</td>
                                             <td class="p-2">0</td>
-                                            <td class="p-2">M</td>
+                                            <td class="p-2">
+                                                @if (((float)$data->pendidikan + (float)$data->penelitian + (float)$data->pengabdian + (float)$data->penunjang) >= 12)
+                                                    M
+                                                @else
+                                                    TM
+                                                @endif
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

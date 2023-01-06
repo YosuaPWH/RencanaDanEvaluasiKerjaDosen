@@ -79,20 +79,7 @@ class LoginController extends Controller
             $dataUser->save();
         }
 
-        $cekApakahAdaIdDiSimpulan = DB::table('table_simpulan')->where('id_akun', '=', $userId)->first();
-        if ($cekApakahAdaIdDiSimpulan == null) {
-            DB::table('table_simpulan')->insert([
-                'id_akun' => $userId,
-                'pendidikan' => 0,
-                'penelitian' => 0,
-                'pengabdian' => 0,
-                'penunjang' => 0
-            ]);
-        }
-
-        $biodata = User::where('id', $userId)->first();
-
-        Auth::login($biodata);
+        Auth::login($dataUser);
         return redirect('/');
     }
 

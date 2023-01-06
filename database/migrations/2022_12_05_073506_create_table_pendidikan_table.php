@@ -24,10 +24,11 @@ return new class extends Migration
             $table->integer('rencana_pertemuan');
             $table->decimal('sks_mk_terhitung', 8, 4);
             $table->decimal('sks_bkd', 8, 4);
+            $table->string('periode');
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

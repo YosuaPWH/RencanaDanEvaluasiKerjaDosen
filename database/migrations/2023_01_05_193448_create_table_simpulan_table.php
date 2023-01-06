@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('penelitian', 8, 4);
             $table->decimal('pengabdian', 8, 4);
             $table->decimal('penunjang', 8, 4);
+            $table->string('periode');
             $table->timestamps();
         });
     }
