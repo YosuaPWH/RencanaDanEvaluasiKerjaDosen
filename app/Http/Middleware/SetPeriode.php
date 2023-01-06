@@ -18,7 +18,7 @@ class SetPeriode
     public function handle(Request $request, Closure $next)
     {
         Auth::user()->periode = $request->route("periode");
-        
+
         return $next($request);
     }
 }

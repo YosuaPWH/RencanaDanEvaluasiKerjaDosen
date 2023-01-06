@@ -24,15 +24,16 @@
                     <div class="mb-3">
                         <label for="username">Username</label>
                         <input type="text" id="username" name="usernameLogin"
-                            class="form-control @error('password') is-invalid @enderror" value="@error('password'){{ old('usernameLogin') }}@enderror"
-                            placeholder="Silahkan masukkan username anda" onclick="removeRedBorder()">
+                            class="form-control @error('password') is-invalid @enderror"
+                            value="@error('password'){{ old('usernameLogin') }}@enderror"
+                            placeholder="Silahkan masukkan username anda">
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="mb-4">
                         <label for="password">Password</label>
                         <input type="password" id="password" name="passwordLogin"
                             class="form-control @error('password') is-invalid @enderror"
-                            placeholder="Silahkan masukkan password anda" onclick="removeRedBorder()">
+                            placeholder="Silahkan masukkan password anda">
                         <div class="invalid-feedback">
                             Username atau password salah
                         </div>
