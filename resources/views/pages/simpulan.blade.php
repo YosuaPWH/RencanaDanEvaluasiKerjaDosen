@@ -2,8 +2,11 @@
 
 @section('page-title', 'Simpulan')
 @section('breadcrumb-title', 'Simpulan')
-@section('periode', '- Semester Genap 2022/2023')
-
+@if (Auth::user()->periode == "2223-2")
+    @section('periode', '- Semester Genap 2022/2023')
+@else
+    @section('periode', '- Semester Ganjil 2022/2023')
+@endif
 
 @section('konten')
 @include('components.nav_rencana_kerja')

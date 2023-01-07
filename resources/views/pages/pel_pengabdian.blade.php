@@ -2,7 +2,11 @@
 
 @section('page-title', 'Rencana - Pengabdian')
 @section('breadcrumb-title', 'Pelaksanaan Pengabdian')
-@section('periode', '- Semester Genap 2022/2023')
+@if (Auth::user()->periode == "2223-2")
+    @section('periode', '- Semester Genap 2022/2023')
+@else
+    @section('periode', '- Semester Ganjil 2022/2023')
+@endif
 
 @section('konten')
 <script>

@@ -43,7 +43,6 @@
         </header>
         <main class=" p-3">
             <div>
-                {{-- <p class="text-black mb-1">Beranda / @yield('breadcrumb-title')</p> --}}
                 @include('components.breadcrumb')
                 <div class="flex">
                     @include('components.iconHall')

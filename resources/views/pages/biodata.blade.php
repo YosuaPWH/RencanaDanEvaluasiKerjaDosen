@@ -2,7 +2,12 @@
 
 @section('page-title', 'Biodata')
 @section('breadcrumb-title', 'Biodata')
-@section('periode', '- Semester Genap 2022/2023')
+
+@if (Auth::user()->periode == "2223-2")
+    @section('periode', '- Semester Genap 2022/2023')
+@else
+    @section('periode', '- Semester Ganjil 2022/2023')
+@endif
 
 @section('konten')
 @include('components.nav_rencana_kerja')
@@ -14,8 +19,7 @@
     <table class="w-full rounded-lg">
         <tr class="font-medium bg-gray-200">
             <th class="p-2">
-                {{-- Nama --}}
-                {{ Auth::user()->periode }}
+                Nama
             </th>
             <td class="w-4/6">
                 {{ Auth::user()->nama }}
