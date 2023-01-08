@@ -16,14 +16,15 @@ class BiodataController extends Controller
 
     function editBiodata(Request $request) {
         $rules = [
-            'ubahNip' => 'required|digits_between:8,20|numeric',
-            'ubahNidn' => 'required|min:9|numeric',
+            'ubahNip' => 'required|min_digits:10|numeric',
+            'ubahNidn' => 'required|min_digits:10|numeric',
             'jabatanfungsional' => 'required',
         ];
 
         $message = [
-            'required' => 'Input :attribute tidak boleh kosong',
-            'numeric' => 'Input :attribute harus berupa angka'
+            'required' => 'Input :attribute tidak boleh kosongs',
+            'numeric' => 'Input :attribute harus berupa angka',
+            'min_digits' => 'Input :attribute minimal :min karakter'
         ];
 
         if ($this->validate($request, $rules, $message)) {
