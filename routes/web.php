@@ -32,15 +32,13 @@ Route::middleware('guest')->group(function() {
 
 Route::middleware('auth')->group(function() {
 
-    Route::middleware('periode')->group(function() {
+    Route::middleware('dosen')->group(function() {
 
         Route::get('{periode}/rencana-kerja/biodata', function() {
             return view('pages.biodata');
         });
         
-        Route::get('/', function() {
-            return view('pages.rencana_kerja');
-        })->name('home');
+        
         
         Route::get('{periode}/rencana-kerja/simpulan', [CRUDTableController::class, 'tampilSimpulan']);
         
@@ -58,6 +56,16 @@ Route::middleware('auth')->group(function() {
         
         Route::post('{periode}/rencana-kerja/edit-biodata', [BiodataController::class, 'editBiodata']);
         
+    });
+
+    // Route::get('/', function() {
+    //     return view('pages.rencana_kerja');
+    // })->name('home');
+
+    Route::get('/', [LoginController::class, 'returnPage'])->name('home');
+
+    Route::middleware('admin')->group(function() {
+
     });
         
     Route::get('/user/logout', [LoginController::class, 'logout']);

@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class SetPeriode
+class DosenAuth
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,12 @@ class SetPeriode
      */
     public function handle(Request $request, Closure $next)
     {
-        Auth::user()->periode = $request->route("periode");
+        if (!(Auth::user()->role == "dosen")) {
+            return response()->view('errors.404');
+        }
 
+        Auth::user()->periode = $request->route("periode");
         return $next($request);
     }
 }
+    

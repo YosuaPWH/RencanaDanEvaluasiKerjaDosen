@@ -44,10 +44,18 @@
         <main class=" p-3">
             <div>
                 @include('components.breadcrumb')
-                <div class="flex">
-                    @include('components.iconHall')
-                    <h4 class="text-black mt-auto mr-auto mb-auto">Rencana Beban Kerja Dosen @yield('periode')</h4>
-                </div>
+                @if (Auth::user()->role == 'dosen') 
+                    <div class="flex">
+                        @include('components.iconHall')
+                        <h4 class="text-black mt-auto mr-auto mb-auto">Rencana Beban Kerja Dosen @yield('periode')</h4>
+                    </div>
+                @else
+                    <div class="flex">
+                        @include('components.iconHall')
+                        <h4 class="text-black mt-auto mr-auto mb-auto">Periode Rencana Kerja Dosen</h4>
+                    </div>
+                @endif
+
                 <hr class="mt-0 text-white">
                 <div class="konten mt-4">
                     @yield('konten')

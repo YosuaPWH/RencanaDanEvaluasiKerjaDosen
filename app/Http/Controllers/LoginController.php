@@ -14,7 +14,6 @@ class LoginController extends Controller
 {
 
     public function login(Request $request){
-
         $username = $request->usernameLogin;
         $password = $request->passwordLogin;
 
@@ -27,27 +26,51 @@ class LoginController extends Controller
         $json = json_decode($response, true);
 
         if ($json['result'] == true) {
-            $token = $json['token'];
 
-            return $this->getDataDosen($json['user']['user_id'], $token);
-        } else {
-            return Redirect::back()
-                ->withInput()
-                ->withErrors(['password' => 'salah']);
-        }
-
+            if ($json['user']['role'] == "Staff") { 
+                $request->session()->regenerate();
+                return $this->loginAdmin($json);   // LOGIN ADMIN
+            } else if ($json['user']['role'] == "Dosen") {
+                $request->session()->regenerate();
+                return $this->loginDosen($json); // LOGIN DOSEN
+            } 
+        } 
+            
+        return Redirect::back()
+            ->withInput()
+            ->withErrors(['password' => 'salah']);
     }
 
-    function getDataDosen($userId, $token) {
-        $responseDataDosen = Http::withToken($token)->asForm()->post('https://cis-dev.del.ac.id/api/library-api/dosen?userid='.$userId)->body();
-        $jsonDataDosen = json_decode($responseDataDosen, true);
-        
-        if(sizeof($jsonDataDosen['data']['dosen']) == 0) {
-            return Redirect::back()
-                ->withInput()
-                ->withErrors(['password' => 'salah']);
+    function loginAdmin($json) {
+        $token = $json['token'];
+        $userId = $json['user']['user_id'];
+
+        $responseDataAdmin = Http::withToken($token)->asForm()->post('https://cis-dev.del.ac.id/api/library-api/pegawai?userid='.$userId)->body();
+        $jsonDataAdmin = json_decode($responseDataAdmin, true);
+
+        $nama = $jsonDataAdmin['data']['pegawai'][0]['nama'];
+
+        $dataAdmin = new User;
+        $dataAdmin->id = $userId;
+        $dataAdmin->nama = $nama;
+        $dataAdmin->role = "admin";
+
+        $cekApakahAdaId = User::where('id', '=', $userId)->exists();
+        if (!$cekApakahAdaId) {
+            $dataAdmin->save();
         }
 
+        Auth::login($dataAdmin);
+
+        return redirect('/');
+    }
+
+    function loginDosen($json) {
+        $token = $json['token'];
+        $userId = $json['user']['user_id'];
+
+        $responseDataDosen = Http::withToken($token)->asForm()->post('https://cis-dev.del.ac.id/api/library-api/dosen?userid='.$userId)->body();
+        $jsonDataDosen = json_decode($responseDataDosen, true);
 
         $nama = $jsonDataDosen['data']['dosen'][0]['nama'];
         $prodi = $jsonDataDosen['data']['dosen'][0]['prodi'];
@@ -73,6 +96,7 @@ class LoginController extends Controller
         $dataUser->nip = $nip;
         $dataUser->jabatan_fungsional = $jabatanFungsional;
         $dataUser->keaktifan = $keaktifanDosen;
+        $dataUser->role = "dosen";
 
         // Cek apakah data sudah ada di dalam database, jika belum akan dibuat data baru di dalam database
         if (!$cekApakahAdaId) {
@@ -83,14 +107,21 @@ class LoginController extends Controller
         return redirect('/');
     }
 
-    function pendidikan() {
-        return view('pendidikan', [
-            'nama' => 'dwa',
-        ]);
+    function returnPage() {
+        if (Auth::user()->role == "dosen") {
+            return view('pages.rencana_kerja');
+        } else {
+            return view('pages.admin');
+        }
     }
 
-    function logout() {
+    function logout(Request $request) {
         Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+        
         return redirect('/');
     }
 

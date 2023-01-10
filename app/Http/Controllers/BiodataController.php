@@ -42,4 +42,5 @@ class BiodataController extends Controller
 
         return redirect(Auth::user()->periode.'/rencana-kerja/biodata');
     }
+
 }
