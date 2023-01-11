@@ -32,13 +32,14 @@
                             </select>
                         </div>
                         <div>
-                            <label for="bebanTugas">Beban Tugas</label>
-                            <input type="text" name="editBebanTugas" id="modal-input-beban-tugas" class="form-control">
-                        </div>
-                        <div>
                             <label for="jlhKegiatan">Jumlah Kegiatan</label>
                             <input type="text" name="editJumlahKegiatan" id="modal-input-jumlah-kegiatan" class="form-control">
                         </div>
+                        <div>
+                            <label for="bebanTugas">Beban Tugas</label>
+                            <input type="text" name="editBebanTugas" id="modal-input-beban-tugas" class="form-control">
+                        </div>
+                        
                     </div>
                 </div>
                 
@@ -67,7 +68,7 @@
             var id = $(this).data('id');
             var namaTabel = $(this).data('nama-tabel');
             let getUrl = $("#url").text();
-            
+
             $.ajax({
                 type: "POST",
                 url: getUrl,

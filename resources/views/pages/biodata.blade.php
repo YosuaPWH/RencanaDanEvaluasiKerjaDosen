@@ -3,11 +3,11 @@
 @section('page-title', 'Biodata')
 @section('breadcrumb-title', 'Biodata')
 
-@if (Auth::user()->periode == "2223-2")
-    @section('periode', '- Semester Genap 2022/2023')
+@if (explode("-", Auth::user()->periode)[1] == "1")
+    @section('periode', '- Semester Ganjil '.str_replace('&', '/', explode("-", Auth::user()->periode)[0]))
 @else
-    @section('periode', '- Semester Ganjil 2022/2023')
-@endif
+    @section('periode', '- Semester Genap '.str_replace('&', '/', explode("-", Auth::user()->periode)[0]))
+@endif 
 
 @section('konten')
 @include('components.nav_rencana_kerja')

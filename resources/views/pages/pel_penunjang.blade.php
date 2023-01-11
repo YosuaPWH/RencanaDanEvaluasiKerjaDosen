@@ -2,11 +2,11 @@
 
 @section('page-title', 'Rencana - Penunjang')
 @section('breadcrumb-title', 'Pelaksanaan Penunjang')
-@if (Auth::user()->periode == "2223-2")
-    @section('periode', '- Semester Genap 2022/2023')
+@if (explode("-", Auth::user()->periode)[1] == "1")
+    @section('periode', '- Semester Ganjil '.str_replace('&', '/', explode("-", Auth::user()->periode)[0]))
 @else
-    @section('periode', '- Semester Ganjil 2022/2023')
-@endif
+    @section('periode', '- Semester Genap '.str_replace('&', '/', explode("-", Auth::user()->periode)[0]))
+@endif 
 
 @section('konten')
 <script>
@@ -29,7 +29,7 @@
     }
 </script>
 
-@include('components.edit_data', ['url' => "/rencana-kerja/penunjang/show-edit-data", 'pelaksanaan' => 'penunjang'])
+@include('components.edit_data', ['url' => '/rencana-kerja/'.Auth::user()->periode.'/penunjang/show-edit-data', 'pelaksanaan' => 'penunjang'])
 @include('components.delete_confirm', ['url' => "penunjang/hapus-data/"])
 @include('components.nav_rencana_kerja')
 

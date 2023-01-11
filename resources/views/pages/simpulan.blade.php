@@ -2,11 +2,11 @@
 
 @section('page-title', 'Simpulan')
 @section('breadcrumb-title', 'Simpulan')
-@if (Auth::user()->periode == "2223-2")
-    @section('periode', '- Semester Genap 2022/2023')
+@if (explode("-", Auth::user()->periode)[1] == "1")
+    @section('periode', '- Semester Ganjil '.str_replace('&', '/', explode("-", Auth::user()->periode)[0]))
 @else
-    @section('periode', '- Semester Ganjil 2022/2023')
-@endif
+    @section('periode', '- Semester Genap '.str_replace('&', '/', explode("-", Auth::user()->periode)[0]))
+@endif 
 
 @section('konten')
 @include('components.nav_rencana_kerja')
@@ -50,13 +50,13 @@
                                             <td class="p-2">1</td>
                                             <td class="p-2">Pelaksanaan Pendidikan</td>
                                             <td class="p-2">Tidak boleh kosong</td>
-                                            <td class="p-2">{{ $data->pendidikan + 0 }}</td>
+                                            <td class="p-2 @if($data->pendidikan != 0) text-green-500 @else text-red-500 @endif font-bold">{{ $data->pendidikan + 0 }}</td>
                                             <td class="p-2">0</td>
                                             <td class="p-2">
                                                 @if ($data->pendidikan == 0)
-                                                    TM
+                                                    <p class="text-red-500 font-bold m-0 p-0">TM</p>
                                                 @else
-                                                    M
+                                                    <p class="text-green-500 font-bold m-0 p-0">M</p>
                                                 @endif
                                             </td>
                                         </tr>
@@ -64,13 +64,13 @@
                                             <td class="p-2">2</td>
                                             <td class="p-2">Pelaksanaan Penelitian</td>
                                             <td class="p-2">Tidak boleh kosong</td>
-                                            <td class="p-2">{{ $data->penelitian + 0 }}</td>
+                                            <td class="p-2 @if($data->penelitian != 0) text-green-500 @else text-red-500 @endif font-bold">{{ $data->penelitian + 0 }}</td>
                                             <td class="p-2">0</td>
                                             <td class="p-2">
                                                 @if ($data->penelitian == 0)
-                                                    TM
+                                                    <p class="text-red-500 font-bold m-0 p-0">TM</p>
                                                 @else
-                                                    M
+                                                    <p class="text-green-500 font-bold m-0 p-0">M</p>
                                                 @endif
                                             </td>
                                         </tr>
@@ -78,13 +78,13 @@
                                             <td class="p-2">3</td>
                                             <td class="p-2">Pelaksanaan Pengabdian</td>
                                             <td class="p-2">Tidak boleh kosong</td>
-                                            <td class="p-2">{{ $data->pengabdian + 0 }}</td>
+                                            <td class="p-2 @if($data->pengabdian != 0) text-green-500 @else text-red-500 @endif font-bold">{{ $data->pengabdian + 0 }}</td>
                                             <td class="p-2">0</td>
                                             <td class="p-2">
                                                 @if ($data->pengabdian == 0)
-                                                    TM
+                                                    <p class="text-red-500 font-bold m-0 p-0">TM</p>
                                                 @else
-                                                    M
+                                                    <p class="text-green-500 font-bold m-0 p-0">M</p>
                                                 @endif
                                             </td>
                                         </tr>
@@ -92,13 +92,13 @@
                                             <td class="p-2">4</td>
                                             <td class="p-2">Pelaksanaan Penunjang</td>
                                             <td class="p-2">Tidak boleh kosong</td>
-                                            <td class="p-2">{{ $data->penunjang + 0}}</td>
+                                            <td class="p-2 @if($data->penunjang != 0) text-green-500 @else text-red-500 @endif font-bold">{{ $data->penunjang + 0}}</td>
                                             <td class="p-2">0</td>
                                             <td class="p-2">
                                                 @if ($data->penunjang == 0)
-                                                    TM
+                                                    <p class="text-red-500 font-bold m-0 p-0">TM</p>
                                                 @else
-                                                    M
+                                                    <p class="text-green-500 font-bold m-0 p-0">M</p>
                                                 @endif
                                             </td>
                                         </tr>
@@ -106,13 +106,13 @@
                                             <td class="p-2"></td>
                                             <td class="p-2">Kriteria Pelaksanaan Pendidikan dan Pelaksanaan Penelitian</td>
                                             <td class="p-2">Minimal 9 SKS</td>
-                                            <td class="p-2">{{ (float)$data->pendidikan + (float)$data->penelitian + 0 }}</td>
+                                            <td class="p-2 @if((float)$data->pendidikan + (float)$data->penelitian != 0) text-green-500 @else text-red-500 @endif font-bold">{{ (float)$data->pendidikan + (float)$data->penelitian + 0 }}</td>
                                             <td class="p-2">0</td>
                                             <td class="p-2">
                                                 @if (($data->pendidikan + $data->penelitian) >= 9)
-                                                    M
+                                                    <p class="text-green-500 font-bold m-0 p-0">M</p>
                                                 @else
-                                                    TM
+                                                    <p class="text-red-500 font-bold m-0 p-0">TM</p>
                                                 @endif
                                             </td>
                                         </tr>
@@ -120,26 +120,26 @@
                                             <td class="p-2"></td>
                                             <td class="p-2">Kriteria Pelaksanaan Pengabdian dan Pelaksanaan Penunjang</td>
                                             <td class="p-2">Tidak boleh kosong</td>
-                                            <td class="p-2">{{ (float)$data->pengabdian + (float)$data->penunjang + 0 }}</td>
+                                            <td class="p-2 @if((float)$data->pengabdian + (float)$data->penunjang != 0) text-green-500 @else text-red-500 @endif font-bold">{{ (float)$data->pengabdian + (float)$data->penunjang + 0 }}</td>
                                             <td class="p-2">0</td>
                                             <td class="p-2">
                                                 @if (($data->pengabdian + $data->penunjang) > 0)
-                                                    M
+                                                    <p class="text-green-500 font-bold m-0 p-0">M</p>
                                                 @else
-                                                    TM
+                                                    <p class="text-red-500 font-bold m-0 p-0">TM</p>
                                                 @endif
                                             </td>
                                         </tr>
                                         <tr class="bg-blue-300">
                                             <td class="p-2" colspan="2">Total Kinerja</td>
                                             <td class="p-2">Minimal 12 SKS dan Maksimal 16 SKS</td>
-                                            <td class="p-2">{{ (float)$data->pendidikan + (float)$data->penelitian + (float)$data->pengabdian + (float)$data->penunjang + 0 }}</td>
+                                            <td class="p-2 @if(((float)$data->pendidikan + (float)$data->penelitian + (float)$data->pengabdian + (float)$data->penunjang) >= 12 && ((float)$data->pendidikan + (float)$data->penelitian + (float)$data->pengabdian + (float)$data->penunjang) <= 16) text-green-500 @else text-red-500 @endif font-bold">{{ (float)$data->pendidikan + (float)$data->penelitian + (float)$data->pengabdian + (float)$data->penunjang + 0 }}</td>
                                             <td class="p-2">0</td>
                                             <td class="p-2">
-                                                @if (((float)$data->pendidikan + (float)$data->penelitian + (float)$data->pengabdian + (float)$data->penunjang) >= 12)
-                                                    M
+                                                @if (((float)$data->pendidikan + (float)$data->penelitian + (float)$data->pengabdian + (float)$data->penunjang) >= 12 && ((float)$data->pendidikan + (float)$data->penelitian + (float)$data->pengabdian + (float)$data->penunjang) <= 16)
+                                                    <p class="text-green-500 font-bold m-0 p-0">M</p>
                                                 @else
-                                                    TM
+                                                    <p class="text-red-500 font-bold m-0 p-0">TM</p>
                                                 @endif
                                             </td>
                                         </tr>

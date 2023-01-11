@@ -20,7 +20,7 @@
                 </button>
             </div>
             {{-- Modal Body --}}
-            <form action="/{{ Auth::user()->periode }}/rencana-kerja/edit-biodata" method="POST">
+            <form action="/rencana-kerja/{{ Auth::user()->periode }}/edit-biodata" method="POST">
                 @csrf
                 <div>
                     <div class="mb-2">

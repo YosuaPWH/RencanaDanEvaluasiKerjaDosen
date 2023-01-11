@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class DosenAuth
 {
@@ -17,7 +18,14 @@ class DosenAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!(Auth::user()->role == "dosen")) {
+        $data = DB::table('table_periode')
+            ->select('id', 'periode', 'status')
+            ->where('periode', '=', str_replace('&', '/', $request->route("periode")))
+            ->first();
+
+            if (!(Auth::user()->role == "dosen")) {
+            return response()->view('errors.404');
+        } else if ($data == null || $data->status == "non-aktif") {
             return response()->view('errors.404');
         }
 

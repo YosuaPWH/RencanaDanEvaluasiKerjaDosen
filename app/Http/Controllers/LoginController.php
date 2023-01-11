@@ -18,6 +18,27 @@ class LoginController extends Controller
         $password = $request->passwordLogin;
 
 
+        // Mekanisme test admin 
+        // Saat akan ke tahap production, maka mekanisme ini akan dihapuskan dan akan digantikan mekanisme method loginAdmin()
+        if ($username == "admin" && $password == "admin") {
+            $request->session()->regenerate();
+
+            $dataAdmin = new User;
+            $dataAdmin->id = 100;
+            $dataAdmin->nama = "Admin";
+            $dataAdmin->role = "admin";
+
+            $cekApakahAdaId = User::where('id', '=', 100)->exists();
+            if (!$cekApakahAdaId) {
+                $dataAdmin->save();
+            }
+
+            Auth::login($dataAdmin);
+
+            return redirect('/');
+        }
+
+
         $response = Http::asForm()->post('https://cis-dev.del.ac.id/api/jwt-api/do-auth', [
             'username' => $username,
             'password' => $password
@@ -108,10 +129,14 @@ class LoginController extends Controller
     }
 
     function returnPage() {
-        if (Auth::user()->role == "dosen") {
-            return view('pages.rencana_kerja');
+        if (Auth::user()->role == "dosen") {   
+            $dataPeriode = DB::table('table_periode')->select('id', 'periode', 'status')->get();
+
+            return view('pages.rencana_kerja')->with('periode', $dataPeriode);
         } else {
-            return view('pages.admin');
+            $dataPeriode = DB::table('table_periode')->select('id', 'periode', 'status')->get();
+
+            return view('pages.admin')->with('periode', $dataPeriode);
         }
     }
 

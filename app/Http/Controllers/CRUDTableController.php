@@ -47,7 +47,7 @@ class CRUDTableController extends Controller
                     'rencana_pertemuan' => $request->rencanaPertemuan,
                     'sks_mk_terhitung' => $request->sksMkTerhitung,
                     'sks_bkd' => $request->SksBkd,
-                    'periode' => $periode
+                    'periode' => str_replace('&', '/', $periode)
                 ]);
             } else {
                 DB::table($namatabel)->insert([
@@ -57,19 +57,22 @@ class CRUDTableController extends Controller
                     'status' => $request->status,
                     'jumlah_kegiatan' => $request->jumlahKegiatan,
                     'beban_tugas' => $request->bebanTugas,
-                    'periode' => $periode
+                    'periode' => str_replace('&', '/', $periode)
                 ]);
             }
         } 
 
-        $this->updateSimpulan();
+        $this->updateSimpulan(str_replace('&', '/', $periode));
 
         return redirect($url);
     }
 
     
     function tampilData($periode, $jenisPelaksanaan) {
-        $this->updateSimpulan();
+
+        $periodeFix = str_replace('&', '/', $periode);
+
+        $this->updateSimpulan($periodeFix);
 
         if ($jenisPelaksanaan == "pendidikan") {
             $namatabel = $this->getNamaTabel($jenisPelaksanaan);
@@ -77,7 +80,7 @@ class CRUDTableController extends Controller
             $tabelDataPendidikan = DB::table($namatabel)
                 ->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas', 'rencana_pertemuan', 'sks_mk_terhitung', 'sks_bkd')
                 ->where('id_akun', '=', Auth::user()->id)
-                ->where('periode', '=', $periode)
+                ->where('periode', '=', $periodeFix)
                 ->get();
             
             return view('pages.pel_pendidikan')->with('datapendidikan', $tabelDataPendidikan);
@@ -88,7 +91,7 @@ class CRUDTableController extends Controller
             $dataTabel = DB::table($namatabel)
                 ->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')
                 ->where('id_akun', '=', Auth::user()->id)
-                ->where('periode', '=', $periode)
+                ->where('periode', '=', $periodeFix)
                 ->get();
                         
             return view('pages.pel_penelitian')->with('datapenelitian', $dataTabel);
@@ -99,7 +102,7 @@ class CRUDTableController extends Controller
             $dataTabel = DB::table($namatabel)
                 ->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')
                 ->where('id_akun', '=', Auth::user()->id)
-                ->where('periode', '=', $periode)
+                ->where('periode', '=', $periodeFix)
                 ->get();
 
             return view('pages.pel_pengabdian')->with('datapengabdian', $dataTabel);
@@ -110,7 +113,7 @@ class CRUDTableController extends Controller
             $dataTabel = DB::table($namatabel)
                 ->select('id', 'bagian_table', 'nama_kegiatan', 'status', 'jumlah_kegiatan', 'beban_tugas')
                 ->where('id_akun', '=', Auth::user()->id)
-                ->where('periode', '=', $periode)
+                ->where('periode', '=', $periodeFix)
                 ->get();
 
             return view('pages.pel_penunjang')->with('datapenunjang', $dataTabel);
@@ -120,7 +123,7 @@ class CRUDTableController extends Controller
         }
     }
 
-    function showEditData(Request $request, $jenisTabel) {
+    function showEditData(Request $request, $periode, $jenisTabel) {
         $namatabel = $this->getNamaTabel($jenisTabel);
 
         if($jenisTabel == "pendidikan") {
@@ -135,6 +138,7 @@ class CRUDTableController extends Controller
 
     function editData(Request $request, $periode, $jenisTabel) {
         $namatabel = $this->getNamaTabel($jenisTabel);
+        $periodeFix = str_replace('&', '/', $periode);
 
         if($this->cekBagianTabel($request->editId, $jenisTabel)->bagian_table == "A" && $jenisTabel == "pendidikan") {
             $rules = [  
@@ -178,29 +182,30 @@ class CRUDTableController extends Controller
             }
         } 
 
-        $this->updateSimpulan();
+        $this->updateSimpulan($periodeFix);
         
         return redirect($this->getUrl($periode, $jenisTabel));
     }
 
-    function tampilSimpulan() {
-        $this->updateSimpulan();
+    function tampilSimpulan($periode) {
+        $periodeFix = str_replace('&', '/', $periode);
+        $this->updateSimpulan($periodeFix);
 
         $dataTabel = DB::table('table_simpulan')
             ->select('pendidikan', 'penelitian', 'pengabdian', 'penunjang')
             ->where('id_akun', '=', Auth::user()->id)
-            ->where('periode', '=', Auth::user()->periode)
+            ->where('periode', '=', $periodeFix)
             ->first();
 
         return view('pages.simpulan')->with('data', $dataTabel);
     }   
 
-    function updateSimpulan() {
+    function updateSimpulan($periodeFix) {
         $cekApakahAdaIdDiSimpulan = DB::table('table_simpulan')
             ->where('id_akun', '=', Auth::user()->id)
-            ->where('periode', '=', Auth::user()->periode)
+            ->where('periode', '=', $periodeFix)
             ->first();
-
+        
         if ($cekApakahAdaIdDiSimpulan == null) {
             DB::table('table_simpulan')->insert([
                 'id_akun' => Auth::user()->id,
@@ -208,39 +213,39 @@ class CRUDTableController extends Controller
                 'penelitian' => 0,
                 'pengabdian' => 0,
                 'penunjang' => 0,
-                'periode' => Auth::user()->periode
+                'periode' => $periodeFix
             ]);
         }
 
         $sksDataPendidikan = DB::table('table_pendidikan')
             ->select('sks_bkd', 'beban_tugas')
             ->where('id_akun', '=', Auth::user()->id)
-            ->where('periode', '=', Auth::user()->periode);
+            ->where('periode', '=', $periodeFix);
 
         $sksPendidikan = $sksDataPendidikan->sum('sks_bkd') + $sksDataPendidikan->sum('beban_tugas');
 
         $sksPenelitian = DB::table('table_penelitian')
             ->select('beban_tugas')
             ->where('id_akun', '=', Auth::user()->id)
-            ->where('periode', '=', Auth::user()->periode)
+            ->where('periode', '=', $periodeFix)
             ->sum('beban_tugas');
 
         $sksPengabdian = DB::table('table_pengabdian')
             ->select('beban_tugas')
             ->where('id_akun', '=', Auth::user()->id)
-            ->where('periode', '=', Auth::user()->periode)
+            ->where('periode', '=', $periodeFix)
             ->sum('beban_tugas');
 
         $sksPenunjang = DB::table('table_penunjang')
             ->select('beban_tugas')
             ->where('id_akun', '=', Auth::user()->id)
-            ->where('periode', '=', Auth::user()->periode)
+            ->where('periode', '=', $periodeFix)
             ->sum('beban_tugas');
 
 
         DB::table('table_simpulan')
             ->where('id_akun', '=', Auth::user()->id)
-            ->where('periode', '=', Auth::user()->periode)
+            ->where('periode', '=', $periodeFix)
             ->update([
                 'pendidikan' => $sksPendidikan,
                 'penelitian' => $sksPenelitian,
@@ -259,7 +264,7 @@ class CRUDTableController extends Controller
         $namatabel = $this->getNamaTabel($jenisTabel);
 
         DB::table($namatabel)->delete($request->delete_id);
-        $this->updateSimpulan();
+        $this->updateSimpulan(str_replace('&', '/', $periode));
 
         return redirect($this->getUrl($periode, $jenisTabel));
     }
@@ -267,13 +272,13 @@ class CRUDTableController extends Controller
     function getUrl($periode, $jenisTabel) {
 
         if ($jenisTabel == "pendidikan") {
-            return $periode."/rencana-kerja/pendidikan";
+            return "/rencana-kerja/".$periode."/pendidikan";
         } else if($jenisTabel == "penelitian") {
-            return $periode."/rencana-kerja/penelitian";
+            return "/rencana-kerja/".$periode."/penelitian";
         } else if($jenisTabel == "pengabdian") {
-            return $periode."/rencana-kerja/pengabdian";
+            return "/rencana-kerja/".$periode."/pengabdian";
         } else {
-            return $periode."/rencana-kerja/penunjang";
+            return "/rencana-kerja/".$periode."/penunjang";
         }
     }
 

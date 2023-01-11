@@ -40,7 +40,7 @@ class BiodataController extends Controller
             ]);
         }
 
-        return redirect(Auth::user()->periode.'/rencana-kerja/biodata');
+        return redirect('/rencana-kerja/'.Auth::user()->periode.'/biodata');
     }
 
 }

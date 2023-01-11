@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BiodataController;
 use App\Http\Controllers\CRUDTableController;
 use App\Http\Controllers\LoginController;
@@ -34,44 +35,43 @@ Route::middleware('auth')->group(function() {
 
     Route::middleware('dosen')->group(function() {
 
-        Route::get('{periode}/rencana-kerja/biodata', function() {
+        Route::get('rencana-kerja/{periode}/biodata', function() {
             return view('pages.biodata');
         });
+
+        Route::get('rencana-kerja/{periode}/simpulan', [CRUDTableController::class, 'tampilSimpulan']);
         
+        Route::get('rencana-kerja/{periode}/{jenisPelaksanaan}', [CRUDTableController::class, 'tampilData']);
         
+        Route::post('rencana-kerja/{periode}/{jenisTabel}/tambah-data', [CRUDTableController::class, 'tambahData']);
         
-        Route::get('{periode}/rencana-kerja/simpulan', [CRUDTableController::class, 'tampilSimpulan']);
+        Route::post('rencana-kerja/{periode}/{jenisTabel}/edit-data', [CRUDTableController::class, 'editData']);
         
-        Route::get('{periode}/rencana-kerja/{jenisPelaksanaan}', [CRUDTableController::class, 'tampilData']);
+        Route::delete('rencana-kerja/{periode}/{jenisTabel}/hapus-data', [CRUDTableController::class, 'hapusData']);
         
-        Route::post('{periode}/rencana-kerja/{jenisTabel}/tambah-data', [CRUDTableController::class, 'tambahData']);
+        Route::post('rencana-kerja/{periode}/biodata/show-edit', [BiodataController::class, 'showEditBiodata']);
         
-        Route::post('rencana-kerja/{jenisTabel}/show-edit-data', [CRUDTableController::class, 'showEditData']);
+        Route::post('rencana-kerja/{periode}/edit-biodata', [BiodataController::class, 'editBiodata']);
         
-        Route::post('{periode}/rencana-kerja/{jenisTabel}/edit-data', [CRUDTableController::class, 'editData']);
-        
-        Route::delete('{periode}/rencana-kerja/{jenisTabel}/hapus-data', [CRUDTableController::class, 'hapusData']);
-        
-        Route::post('{periode}/rencana-kerja/biodata/show-edit', [BiodataController::class, 'showEditBiodata']);
-        
-        Route::post('{periode}/rencana-kerja/edit-biodata', [BiodataController::class, 'editBiodata']);
-        
+        Route::post('rencana-kerja/{periode}/{jenisTabel}/show-edit-data', [CRUDTableController::class, 'showEditData']);
     });
 
-    // Route::get('/', function() {
-    //     return view('pages.rencana_kerja');
-    // })->name('home');
-
-    Route::get('/', [LoginController::class, 'returnPage'])->name('home');
+    Route::get('/', function() {
+        return redirect('/rencana-kerja');
+    })->name('home');
 
     Route::middleware('admin')->group(function() {
+        Route::post('tambah-periode', [AdminController::class, 'tambahPeriode']);
 
+        Route::post('tutup-periode', [AdminController::class, 'tutupPeriode']);
+
+        Route::post('buka-periode', [AdminController::class, 'bukaPeriode']);
+
+        Route::delete('hapus-periode', [AdminController::class, 'hapusPeriode']);
     });
         
     Route::get('/user/logout', [LoginController::class, 'logout']);
 
-    Route::get('/rencana-kerja', function () {
-        return view('pages.rencana_kerja');
-    });
+    Route::get('/rencana-kerja', [LoginController::class, 'returnPage']);
 
 });

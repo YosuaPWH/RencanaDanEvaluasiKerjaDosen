@@ -2,11 +2,11 @@
 
 @section('page-title', 'Rencana - Pendidikan')
 @section('breadcrumb-title', 'Pelaksanaan Pendidikan')
-@if (Auth::user()->periode == "2223-2")
-    @section('periode', '- Semester Genap 2022/2023')
+@if (explode("-", Auth::user()->periode)[1] == "1")
+    @section('periode', '- Semester Ganjil '.str_replace('&', '/', explode("-", Auth::user()->periode)[0]))
 @else
-    @section('periode', '- Semester Ganjil 2022/2023')
-@endif
+    @section('periode', '- Semester Genap '.str_replace('&', '/', explode("-", Auth::user()->periode)[0]))
+@endif 
 
 @section('konten')
 
@@ -30,8 +30,8 @@
     }
 </script>
 
-@include('components.edit_data', ['url' => "/rencana-kerja/pendidikan/show-edit-data", 'pelaksanaan' => 'pendidikan'])
-@include('components.edit_data_PendA', ['url' => "/rencana-kerja/pendidikan/show-edit-data", 'pelaksanaan' => 'pendidikan'])
+@include('components.edit_data', ['url' => '/rencana-kerja/'.Auth::user()->periode.'/pendidikan/show-edit-data', 'pelaksanaan' => 'pendidikan'])
+@include('components.edit_data_PendA', ['url' => '/rencana-kerja/'.Auth::user()->periode.'/pendidikan/show-edit-data', 'pelaksanaan' => 'pendidikan'])
 @include('components.delete_confirm', ['url' => "pendidikan/hapus-data/"])
 @include('components.nav_rencana_kerja')
 
